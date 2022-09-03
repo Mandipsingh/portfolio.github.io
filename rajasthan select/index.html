@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RAJASTAN PANTONE</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/camel.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> </head>
+
+<body>
+    <div class="header">
+        <div class="logo"><img src="images/logo.png" alt="logo"></div>
+        <h1>RAJASTAN<br> SELECT</h1>
+        <div class="banner"> <img src="images/banner-1.jpg" alt="banner">
+            <div class="nav">
+                <label for="show-menu" class="show-menu"><i class="fa fa-bars"></i></label>
+                <input type="checkbox" id="show-menu" role="button">
+                <ul id="menu">
+                    <li> <a href="index.html">About</a> </li>
+                    <li> <a href="colourswatch.html">Colour Swatches</a> </li>
+                    <li> <a href="ratio.html">Ratio</a> </li>
+                    <li> <a href="pattern.html">Patterns</a> </li>
+                    <li> <a href="symmetry.html">Symmetry</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="column_1">
+        <div class="row_1">
+            <div class="image image_height ">
+                <a href="colourswatch.html"><img src="images/pic (1).png"></a>
+            </div>
+            <div class="image  ">
+                <a href="colourswatch.html"><img src="images/yellowturbn.png"> </a>
+            </div>
+            <div class="image image_height ">
+                <a href="colourswatch.html"><img src="images/pic (1).jpg"></a>
+            </div>
+        </div>
+        <div class="row_2">
+            <div class="image image_height">
+                <a href="colourswatch.html"><img src="images/stair.jpg"></a>
+            </div>
+            <div class="image top_image ">
+                <a href="colourswatch.html"><img src="images/baba.png"></a>
+            </div>
+            <div class="image image_height">
+                <a href="colourswatch.html"><img src="images/door.jpg"> </a>
+            </div>
+        </div>
+        <div class="view_dropdown">
+            <div class="dropdown_images">
+                <div class="row_3">
+                    <div class="image image_height ">
+                        <a href="colourswatch.html"><img src="images/rajasthan(1).jpg"></a>
+                    </div>
+                    <div class="image top_image ">
+                        <a href="colourswatch.html"><img src="images/rajasthan(2).jpg"> </a>
+                    </div>
+                    <div class="image image_height ">
+                        <a href="colourswatch.html"><img src="images/rajasthan(3).png"></a>
+                    </div>
+                </div>
+                <div class="row_4">
+                    <div class="image image_height">
+                        <a href="colourswatch.html"><img src="images/rajasthan(4).jpg"></a>
+                    </div>
+                    <div class="image top_image ">
+                        <a href="colourswatch.html"><img src="images/rajasthan(5).jpg"></a>
+                    </div>
+                    <div class="image image_height">
+                        <a href="colourswatch.html"><img src="images/rajasthan(6).png"> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="more"> <a href="#">view more</a></div>
+        </div>
+    </div>
+    <script>
+        $(".more").click(function (e) { //hide and show for images
+            e.preventDefault();
+            $(".dropdown_images").toggle();
+        })
+        var $menu = $('#menu');
+        $('.show-menu').click(function () {
+            $menu.slideToggle();
+        });
+        $(document).mouseup(function (e) {
+            if (!$menu.is(e.target) && $menu.has(e.target).length === 0) // if the target of the click isn't the container...
+            // ... nor a descendant of the container
+            {
+                $menu.hide();
+            }
+        });
+    </script>
+    <div class="column_2">
+        <div class="banner_1"> <img src="images/about.jpg" alt="banner_1">
+            <div class="about">
+                <div class="content">
+                    <h3>About</h3>
+                    <p>Rajastan select is a feature introduced in the 2018 Pantone collection. This collection is inspired from a city in India, which is known for its vibrant colors.This piece of work takes the viewer through a set of Informative and interactive photographs and abstract pieces that define the ratios and provide Pantone color codes for complementary and contrasting colors. Designers and Artists are welcomed to use these picked Pantones for a theme that evokes this vibrant culture.</p>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="column_3">
+        <div class="row_3">
+            <div class="motives"><img src="images/shape (3).png" alt="banner_1"></div>
+            <div class="motives design"><img src="images/shape (4).png" alt="banner_1"></div>
+            <div class="motives"><img src="images/shape (7).png" alt="banner_1"></div>
+            <div class="motives "><img src="images/shape (5).png" alt="banner_1"></div>
+            <div class="motives design"><img src="images/shape (1).png" alt="banner_1"></div>
+            <div class="motives"><img src="images/shape (2).png" alt="banner_1"></div>
+            <div class="motives"><img src="images/shape (8).png" alt="banner_1"></div>
+            <div class="motives design"><img src="images/shape (6).png" alt="banner_1"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="footer">
+        <div class="f_logo"> <img src="images/logo.png">
+            <div class="social">
+                <p>Stay Connected</p>
+                <br> </div>
+            <div class="icon"> <a href="#"><i class="fa fa-pinterest"></i></a> <a href="#"><i class="fa fa-facebook-f"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> </div>
+        </div>
+        <div class="footer_content">
+            <div class="clr"></div>
+            <div class="f_content1">
+                <h3>About</h3>
+                <p>events</p>
+                <p>Career opportunities</p>
+                <p>press release</p>
+            </div>
+            <div class="f_content1">
+                <h3>Services</h3>
+                <p>pantoneLIVE</p>
+                <p>CertifiesPrinter Programme</p>
+                <p>trade in programme</p>
+            </div>
+            <div class="f_content1">
+                <h3>Customer Service</h3>
+                <p>help center</p>
+                <p>Find a pantone colour</p>
+                <p>colour cross reference</p>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">Designed & Developed by R.W & M.S</div>
+    <div id="gototop"><i class="fa fa-angle-up"></i></div>
+    <script>
+        $("#gototop").click(function (e) {
+            e.preventDefault();
+            $("html,body").animate({
+                "scrollTop": "0px"
+            }, 700, )
+        })
+        $(window).scroll(function () {
+            var x = $(this).scrollTop();
+            if (x >= 300) {
+                $("#gototop").fadeIn()
+            }
+            else {
+                $("#gototop").fadeOut()
+            }
+        })
+    </script>
+</body>
+
+</html>

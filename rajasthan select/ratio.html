@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RAJASTAN PANTONE</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/camel.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/montreal" type="text/css" /> </head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <label for="show-menu" class="show-menu"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="show-menu" role="button">
+            <ul id="menu">
+                <li> <a href="index.html">About</a> </li>
+                <li> <a href="colourswatch.html">Colour Swatches</a> </li>
+                <li> <a href="ratio.html">Ratio</a> </li>
+                <li> <a href="pattern.html">Patterns</a> </li>
+                <li> <a href="symmetry.html">Symmetry</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ratio">
+        <div class="ratio_images"> <a href="images/ratio1_(1).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(1).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(2).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(2).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(3).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(3).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(4).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(4).jpg" alt="rajasthan_motives"> </div>
+        <div class="ratio_images ration_more"> <a href="images/ratio1_(5).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(5).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(6).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(6).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(7).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(7).jpg" alt="rajasthan_motives"> <a href="images/ratio1_(8).jpg" class="download1" download><i class="fa fa-download"></i></a><img src="images/ratio1_(8).jpg" alt="rajasthan_motives"> </div>
+        <div class="view_more"> <a href="#">view more</a></div>
+    </div>
+    <div class="clr"></div>
+    <div class="footer">
+        <div class="f_logo">
+            <img src="images/logo.png"> 
+        <div class="social">
+            <p>Stay Connected</p>
+            <br> </div>
+        <div class="icon"> <a href="#"><i class="fa fa-pinterest"></i></a> <a href="#"><i class="fa fa-facebook-f"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> </div>
+            </div>
+        <div class="footer_content">
+            <div class="clr"></div> 
+            <div class="f_content1">
+                
+                <h3>About</h3>
+                 <p>events</p>
+                <p>Career opportunities</p>
+                <p>press release</p>
+            
+            
+            </div> 
+            <div class="f_content1"> 
+                <h3>Services</h3>
+                
+                <p>pantoneLIVE</p>
+                 <p>CertifiesPrinter Programme</p>
+                <p>trade in programme</p>
+            </div> 
+            <div class="f_content1"> 
+                 <h3>Customer Service</h3>
+                <p>help center</p>
+                 <p>Find a pantone colour</p>
+                <p>colour cross reference</p>
+               
+                
+            </div>
+        </div>
+    </div>
+    <div class="copyright">Designed & Developed by R.W & M.S</div>
+    
+    
+    <div id="gototop"><i class="fa fa-angle-up"></i></div>
+    
+    <script>
+    
+    $("#gototop").click(function(e) {
+                e.preventDefault();
+                $("html,body").animate({
+                    "scrollTop": "0px"
+                }, 700, )
+            })
+            $(window).scroll(function() {
+                var x = $(this).scrollTop();
+                if (x >= 300) {
+                    $("#gototop").fadeIn()
+                } else {
+                    $("#gototop").fadeOut()
+                }
+            })
+    
+    
+    </script>
+    <script>
+        $(".view_more").click(function (e) { //hide and show for images
+            e.preventDefault();
+            $(".ration_more").toggle();
+        })
+        var $menu = $('#menu');
+        $('.show-menu').click(function () {
+            $menu.slideToggle();
+        });
+        $(document).mouseup(function (e) {
+            if (!$menu.is(e.target) && $menu.has(e.target).length === 0) // if the target of the click isn't the container...
+            // ... nor a descendant of the container
+            {
+                $menu.hide();
+            }
+        });
+    </script>
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TENNIS</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="tennis,tournaments,tennis events,tennis upcooming">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="images/Tennis-Logo-Png.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <picture>
+            <source media="(min-width:400px)" srcset="images/tenniscourt1.jpg"> </picture>
+        <div class="header">
+            <picture> </picture>
+            <div class="nav">
+                <div class="logo">
+                    <a href="index.html"><img src="images/icontenns.png"></a>
+                </div>
+                <label for="show-menu" class="show-menu"><i class="fa fa-bars" style="font-size:25px"></i></label>
+                <input type="checkbox" id="show-menu" role="button">
+                <ul id="menu">
+                    <li><a class="active">TOURNAMENTS</a>
+                        <div class="mega-menu">
+                            <div class="inner-mega-menu innermega-brandName"> <a href="international.html">International</a> <a>National</a></div>
+                        </div>
+                    </li>
+                    <li><a>SCORES</a></li>
+                    <li><a>EVENTS</a>
+                        <div class="mega-menu">
+                            <div class="inner-mega-menu innermega-brandName">
+                                <p><a>Current</a></p>
+                                <p><a>Upcoming</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a>VIDEOS</a>
+                        <div class="mega-menu">
+                            <div class="inner-mega-menu innermega-brandName">
+                                <p><a>Live Videos</a></p>
+                                <p><a>Recent videos</a></p>
+                                <p><a>Categories</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a>PLAYERS & RANKING</a></li>
+                    <li>
+                        <input type="text" placeholder="search" id="search"> </li>
+                    <li>
+                        <p class="Livematch"><i style="font-size:14px" class="fa">&#xf01d;</i><a href="currenttournament.html">&nbsp;Live Match</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Current">
+        <div class="current_img  active">
+            <h3>CURRENT TOURNAMENTS</h3> <img src="images/tourn1.jpg" alt="image">
+            <div class="current-text">
+                <p>WTA NEW HAVEN:CONNECTICUT OPEN 2018</p>
+                <br>
+                <p>Aug 20-Sep 20,2018</p>
+            </div>
+            <p class="click"><a href="currenttournament.html">Click to Preview</a></p>
+        </div>
+        <div class="current_img"> <img src="images/tourn2.png" alt="image"> </div>
+        <div class="current_img "> <img src="images/tourn3.jpg" alt="image"> </div> <a id="left-arrow"><i class="fa fa-angle-left"></i></a> <a id="right-arrow"><i class="fa fa-angle-right"></i></a> </div>
+    <div class="clr"></div>
+    <div class="Upcoming Upcoming_1">
+        <div class="current_img">
+            <h3>UPCOMING TOURNAMENTS</h3> <img src="images/Sania.png" alt="image"> </div>
+        <div class="current_img"> <img src="images/L.paes.png" alt="image"> </div>
+        <div class="current_img"> <img src="images/john-fornander.png" alt="image"> </div> <a id="left-arrow"><i class="fa fa-angle-left"></i></a> <a id="right-arrow"><i class="fa fa-angle-right"></i></a> </div>
+    <div class="clr"></div>
+    <div class="Recent">
+        <div class="current_img">
+            <h3>RECENT TOURNAMENTS</h3> <img src="images/recentimages2.png" alt="image"> </div>
+        <div class="current_img"> <img src="images/recentimages1.png" alt="image"> </div>
+        <div class="current_img"> <img src="images/roger.png" alt="image"> </div> <a id="left-arrow"><i class="fa fa-angle-left"></i></a> <a id="right-arrow"><i class="fa fa-angle-right"></i></a> </div>
+    <div class="clr"></div>
+    <button id="gototop"><img src="images/tennis-ball.png"><p>HIT ME</p></button>
+    <div class="footer">
+        <div class="footer_container"><a class="about">ABOUT US</a> <a>TOURNAMENTS</a> <a>SCORES</a> <a>EVENTS</a> <a>UPCOMING</a> <a>CURRENT</a> <a>LIVE MATCH</a> <a>TENNIS NEWS</a><a>MAGAZINE</a><a class="contact">CONTACT US</a> </div>
+        <div class="Social"> <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-instagram"></i> </div>
+        <div class="clr"></div>
+        <div class="privacy"><a>Privacy Policy</a><a>Advertise</a></div>
+        <div class="copyright">
+            <p>© 2018 Tennis Channel Network. All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // jquery scroll function
+            $("#gototop").click(function(e) {
+                e.preventDefault();
+                $("html,body").animate({
+                    "scrollTop": "0px"
+                }, 700, )
+            })
+
+            $(window).scroll(function() {
+                var x = $(this).scrollTop();
+
+                if (x >= 200) {
+                    $("#gototop").fadeIn()
+                } else {
+                    $("#gototop").fadeOut()
+                }
+
+
+            })
+
+        });
+    </script>
+</body>
+
+</html>

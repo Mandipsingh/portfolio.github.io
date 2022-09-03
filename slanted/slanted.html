@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>R & R PVT LTD</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/building.png">
+    <link rel="stylesheet" href="cssbxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> </head>
+
+<body>
+    <div class="header">
+        <div class="category">
+            <div class="dropdown">
+                <button class="dropbtn">Buy</button>
+                <div class="dropdown-content"> <a href="#">Home</a> <a href="#">Flat</a> <a href="#">Villa</a> </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Sell</button>
+                <div class="dropdown-content"> <a href="#">Home</a> <a href="#">Flat</a> <a href="#">Villa</a> </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Rent</button>
+                <div class="dropdown-content"> <a href="#">Home</a> <a href="#">Flat</a> <a href="#">Villa</a> </div>
+            </div>
+        </div>
+        <div class="name">
+            <div class="bxslider">
+                <div><img src="images/house04.jpg"></div>
+                <div><img src="images/house.jpg"></div>
+                <div><img src="images/building1.jpg"></div>
+            </div>
+            <h2>R & R Pvt Ltd</h2> <span class="tag"><h4>“Where Dreams Come Home”</h4></span> </div>
+        <div class="logo">
+            <div class="circle">
+                <p>R<span class="r">R</span></p>
+            </div>
+        </div>
+        <div class="nav sidenav" id="mySidenav">
+            <label for="show-menu" class="show-menu"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="show-menu" role="button">
+            <ul id="menu">
+                <li> <a href="#" onmousedown="beep.play()">About</a> </li>
+                <li> <a href="#" onmousedown="beep.play()">R & R localities</a> </li>
+                <li> <a href="#" onmousedown="beep.play()">Advertise with us</a> </li>
+                <li> <a href="#" onmousedown="beep.play()">Sales Enquiry</a> </li>
+                <li> <a href="#" onmousedown="beep.play()">Help</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="wrapper1 wrapper2">
+        <div class="wrapper1-container">
+            <div class="wrapper1-container-internal"> <img src="images/house1.jpg" class="house1img" alt="image"> </div>
+            <div class="wrapper1-container-internal">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="wrapper1">
+        <div class="wrapper1-container">
+            <div class="wrapper1-container-internal">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="wrapper1-container-internal"> <img src="images/house3.jpg" alt="image"> </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="icon">
+            <p>Contact Us</p> <a href="#"><i class="fa fa-pinterest"></i></a> <a href="#"><i class="fa fa-facebook-f"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> </div>
+        <div class="footer_content">
+            <div class="clr"></div> <a href="#">About</a> <a href="#">Services</a> <a href="#">Feedback</a> </div>
+    </div>
+    <div class="copyright">
+        <p>@2018|Designed & Developed By Mandip</p>
+    </div>
+    <script>
+        var beep = new Audio();
+        beep.src = "images/waterdrop2.mp3";
+    </script>
+    <script>
+        var $menu = $('#menu');
+        $('.show-menu').click(function () {
+            $menu.slideToggle();
+        });
+        $(document).mouseup(function (e) {
+            if (!$menu.is(e.target) && $menu.has(e.target).length === 0) // if the target of the click isn't the container...
+            // ... nor a descendant of the container
+            {
+                $menu.hide();
+            }
+        });
+    </script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script>
+        /* bxslider */
+        $(function () {
+            $('.bxslider').bxSlider({
+                mode: 'horizontal'
+                , captions: true
+                , auto: true
+                , stopAutoOnClick: true
+            , });
+        });
+    </script>
+</body>
+
+</html>

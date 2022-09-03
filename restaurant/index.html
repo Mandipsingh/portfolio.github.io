@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MR restaurant & bar</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/beer4.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+                    // Store hash
+                    var hash = this.hash;
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 2000, function () {
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+    <div class="wrap-1">
+        <div class="header"> <a><address class="address head">Address:New Ashok nagar,Delhi-110096</address></a> <a href="tel:8147174067" class="tel head">8147174067</a> <span class="head">Timing:-&nbsp;10.30 AM-11.30 PM</span>
+            <div class="Top-right head"> <a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i class="fa fa-facebook-square"></i></a> <a href="#"><i class="fa fa-twitter-square"></i></a> </div>
+            <div class="logo">
+                <h1><span class="font">MR</span> <sub> bar & restaurant</sub></h1></div>
+        </div>
+        <div class="clr"></div>
+        <div class="nav">
+            <label for="show-menu" class="show-menu">&nbsp;&nbsp;&#9776;</label>
+            <input type="checkbox" id="show-menu" role="button">
+            <ul id="menu">
+                <li><a href="#col-2">Home</a></li>
+                <li><a href="#menus">Menu</a></li>
+                <li><a href="#slideshow">Gallery</a></li>
+                <li><a href="#main_h3">Reservation</a></li>
+                <li><a href="#contactform">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap-2">
+        <div class="col-1">
+            <div id="col-2">
+                <div class="box animate fadeInDown two">
+                    <h1>Welcome to MR bar & Restaurant</h1> </div>
+                <p>MR restaurant & bar is a light, sunny and unique bar and dining venue located on the New Ashok nagar,Delhi.
+                    <br> With individual spaces across an open plan area, and a large deck overlooking the metro,
+                    <br> MR restaurant & bar is an ideal venue for hosting your next celebration, function or informal meeting.
+                    <br> Impress your guests with this top location, complemented by mouth-watering food and a range of beverage options.</p>
+                <br>
+                <a href="#main_h3">
+                    <h3 id="book"> Book a table online</h3></a>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-3">
+        <div class="online"> </div>
+        <div id="menus" class="menus">
+            <h1>Menu</h1>
+            <a href="images/breakfast.jpg" target="_blank"><img src="images/breakfast.jpg" alt="menu" class="Menu-1"></a>
+            <a href="images/dinner.png" target="_blank"><img src="images/dinner.png" alt="menu" class="Menu-1"></a>
+            <a href="images/party.jpg" target="_blank"><img src="images/party.jpg" alt="menu" class="Menu-1"></a>
+            <a href="images/menubeer.jpg" target="_blank"><img src="images/menubeer.jpg" alt="menu" class="Menu-2"></a>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div id="slideshow">
+        <div> <img src="images/image6.jpg" alt=""> </div>
+        <div> <img src="images/image7.jpg" alt=""> </div>
+        <div> <img src="images/image8.jpg" alt=""> </div>
+        <div> <img src="images/image10.jpg" alt=""> </div>
+    </div>
+    <h1 id="gallery">Gallery</h1>
+    <script>
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function () {
+            $('#slideshow > div:first').fadeIn(1000).next().fadeOut(1000).end().appendTo('#slideshow');
+        }, 3000);
+    </script>
+    <div class="wrap-4">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <div id="main_h3">
+                                <h1>Reserve your Table</h1></div>
+                        </div>
+                        <div id="inner">
+                            <h3> Book a table online</h3> </div>
+                        <br>
+                        <div class="reservation-form-holder">
+                            <div class="reservation-form">
+                                <div id="message"></div>
+                                <form method="post" action="">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <!--date-->
+                                            <input type="date" name="resdate" class="form-control cus_form" required="required" />
+                                            <!--time-->
+                                            <select name="time" class="form-control cus_form" id="select">
+                                                <br>
+                                                <option value="10:00am" selected="selected" value="10:00am">10:00 am</option>
+                                                <option value="10:30am">10:30 am</option>
+                                                <option value="11:00am">11:00 am</option>
+                                                <option value="11:30am">11:30 am</option>
+                                                <option value="12:00pm">12:00 pm</option>
+                                                <option value="12:30pm">12:30 pm</option>
+                                                <option value="1:00pm">1:00 pm</option>
+                                                <option value="1:30pm">1:30 pm</option>
+                                                <option value="2:00pm">2:00 pm</option>
+                                                <option value="2:30pm">2:30 pm</option>
+                                                <option value="3:00pm">3:00 pm</option>
+                                                <option value="3:30pm">3:30 pm</option>
+                                                <option value="4:00pm">4:00 pm</option>
+                                                <option value="4:30pm">4:30 pm</option>
+                                                <option value="5:00pm">5:00 pm</option>
+                                                <option value="5:30pm">5:30 pm</option>
+                                                <option value="6:00pm">6:00 pm</option>
+                                                <option value="6:30pm">6:30 pm</option>
+                                                <option value="7:00pm">7:00 pm</option>
+                                                <option value="7:30pm">7:30 pm</option>
+                                                <option value="8:00pm">8:00 pm</option>
+                                                <option value="8:30pm">8:30 pm</option>
+                                                <option value="9:00pm">9:00 pm</option>
+                                                <option value="9:30pm">9:30 pm</option>
+                                                <option value="10:00pm">10:00 pm</option>
+                                                <option value="10:30pm">10:30 pm</option>
+                                                <option value="11:00pm">11:00 pm</option>
+                                                <option value="11:30pm">11:30 pm</option>
+                                                <option value="11:00pm">12:00 am</option>
+                                                <option value="11:30pm">12:30 am</option>
+                                            </select>
+                                            <!--restaurant-->
+                                            <select class="form-control cus_form" id="select" name="table">
+                                                <option value="Table 1">Table 1</option>
+                                                <option value="Table 2">Table 2</option>
+                                                <option value="Table 3">Table 3</option>
+                                                <option value="Table 4">Table 4</option>
+                                                <option value="Table 5">Table 5</option>
+                                                <option value="Table 6">Table 6</option>
+                                                <option value="Table 7">Table 7</option>
+                                                <option value="Table 8">Table 8</option>
+                                                <option value="Table 9">Table 9</option>
+                                                <option value="Table 10">Table 10</option>
+                                            </select>
+                                            <!--person-->
+                                            <select class="form-control cus_form" id="select" name="members">
+                                                <option value="1 Person">1 Person</option>
+                                                <option value="2 Peoples">2 People</option>
+                                                <option value="3 Peoples">3 People</option>
+                                                <option value="4 Peoples">4 People</option>
+                                                <option value="5 Peoples">5 People</option>
+                                                <option value="6 Peoples">6 People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>Contact Details</h3>
+                                            <!--name-->
+                                            <input type="text" name="name" placeholder="Name" class="cus_form form-control" required="required" />
+                                            <br>
+                                            <!--mail-->
+                                            <input type="email" placeholder="Email ID" name="email" class="cus_form form-control" required="required" />
+                                            <br>
+                                            <!--phone-->
+                                            <input type="text" placeholder="Contact no." class="cus_form form-control" name="phone" required="required" />
+                                            <br>
+                                            <!--message-->
+                                            <textarea class="cus_form form-control" placeholder="Address" rows="4" name="address"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6">
+                                            <button type="submit" name="submit" class="cus_form_btn">Book Now</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="contactform">
+        <div class="map">
+            <div id="sample"></div>
+        </div>
+        <div class="contact">
+            <form role="form" action="" method="post">
+                <h2>Contact Us<span class="formicon" ></span></h2>
+                <hr>
+                <br>
+                <div class="input-container">
+                    <label for="name"><i class="fa fa-user-o  icon"></i></label>
+                    <input class="input-field" type="text" placeholder="Name" id="name" required> </div>
+                <div class="input-container">
+                    <label for="email"><i class="fa fa-envelope-o icon  "></i></label>
+                    <input class="input-field" type="email" placeholder="Email" id="email" required> </div>
+                <div class="input-container">
+                    <label for="mobile"> <i class="fa fa-phone   icon"></i></label>
+                    <input class="input-field" type="text" placeholder="Mobile no." id="mobile"> </div>
+                <label for="comment">Comment:</label>
+                <div class="input-container"> <i class="area"></i>
+                    <textarea rows="10" cols="40" placeholder=" Message...." id="comment" required></textarea>
+                </div>
+                <button type="submit" name="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </div>
+    <div id="gototop"><i class="fa fa-angle-up"></i></div>
+    <div class="footer">
+        <h4>Address:New Ashok nagar,<br>Delhi-110096<span><i class="material-icons">&#xe55f;</i></span></h4>
+        <div class="clr"></div>
+        <div class="copyright">
+            <p>Designed & Developed by Mandip</p>
+        </div>
+    </div>
+    
+    <script>
+    
+    $("#gototop").click(function(e) {
+                e.preventDefault();
+                $("html,body").animate({
+                    "scrollTop": "0px"
+                }, 700, )
+            })
+            $(window).scroll(function() {
+                var x = $(this).scrollTop();
+                if (x >= 300) {
+                    $("#gototop").fadeIn()
+                } else {
+                    $("#gototop").fadeOut()
+                }
+            })
+    
+    
+    
+    </script>
+</body>
+
+</html>

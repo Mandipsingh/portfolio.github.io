@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SPACE- THE UNKNOWN WORLD</title>
+    <link rel="icon" href="image/galaxy.jpg">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background: #000;
+        }
+        
+        .earth {
+            position: absolute;
+            top: 350px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            max-width: 100%;
+            width: 300px;
+            height: 300px;
+            background-image: url(image/globeimg.jpg);
+            border-radius: 50%;
+            background-size: cover;
+            z-index: 1;
+            box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
+            animation: spin 30s linear infinite;
+            display: inline-block;
+        }
+        
+        .earth:hover {
+            animation-play-state: paused;
+        }
+        
+        .mars {
+            position: absolute;
+            top: 30px;
+            right: 100px;
+            max-width: 100%;
+            width: 200px;
+            height: 200px;
+            background-image: url(image/mars2.jpg);
+            border-radius: 50%;
+            background-size: cover;
+            z-index: -1;
+            box-shadow: -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
+            animation: spin 20s linear infinite;
+            display: inline-block;
+        }
+        
+        .galaxy img {
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 450px;
+            background-image: url(image/globeimg.jpg);
+            z-index: -1;
+            left: 0;
+            right: 0;
+            animation: spin 30s linear infinite;
+        }
+        
+        .star {
+            max-width: 100%;
+            color: #fff;
+            animation: blink 5s linear infinite;
+        }
+        
+        .star1 {
+            color: #fff;
+            animation: fall 2s linear infinite;
+            font-size: 22px;
+        }
+        
+        @keyframes blink {
+            0% {
+                color: yellow;
+            }
+            50% {
+                color: #fff;
+            }
+            100% {
+                color: gray;
+            }
+        }
+        
+        @keyframes fall {
+            0% {
+                color: white;
+            }
+            50% {
+                color: #fff;
+            }
+            100% {
+                transform: translate(-550px, 300px);
+                color: gray;
+                font-size: 5px;
+            }
+        }
+        
+        @keyframes twinkle {
+            0% {
+                color: white;
+            }
+            50% {
+                color: #fff;
+            }
+            100% {
+                transform: translate(300px, 300px);
+                color: gray;
+                font-size: 6px;
+            }
+        }
+        
+        .star14 {
+            position: absolute;
+            color: #fff;
+            animation: twinkle 4s linear infinite;
+        }
+        
+        .star1 {
+            float: right;
+            margin: 60px;
+            top: 100px;
+        }
+        
+        .star2 {
+            position: absolute;
+            left: 130px;
+            margin: 60px;
+            top: 100px;
+        }
+        
+        .star3 {
+            position: absolute;
+            left: 100px;
+            margin: 60px;
+            top: 300px;
+        }
+        
+        .star4 {
+            position: absolute;
+            left: 0px;
+            margin: 60px;
+        }
+        
+        .star5 {
+            position: absolute;
+            left: 180px;
+            margin: 60px;
+        }
+        
+        .star6 {
+            position: absolute;
+            left: 200px;
+            top: 20px;
+            margin: 60px;
+        }
+        
+        .star7 {
+            position: absolute;
+            left: 350px;
+            top: 60px;
+            margin: 60px;
+        }
+        
+        .star8 {
+            position: absolute;
+            left: 400px;
+            top: 120px;
+            margin: 60px;
+        }
+        
+        .star9 {
+            position: absolute;
+            left: 800px;
+            top: 80px;
+            margin: 60px;
+        }
+        
+        .star10 {
+            position: absolute;
+            left: 850px;
+            top: 160px;
+            margin: 60px;
+        }
+        
+        .star11 {
+            position: absolute;
+            left: 600px;
+            top: 200px;
+            margin: 60px;
+        }
+        
+        .star12 {
+            position: absolute;
+            left: 800px;
+            top: 200px;
+            margin: 60px;
+        }
+        
+        .star13 {
+            position: absolute;
+            left: 900px;
+            top: 380px;
+            margin: 60px;
+        }
+        
+        @keyframes spin {
+            100% {
+                background-position: -100%;
+            }
+        }
+        
+        @media screen and (max-width: 760px) {
+            .star {
+                max-width: 100%;
+                height: auto;
+            }
+            .star8 {
+                position: absolute;
+                left: 85px;
+                top: 120px;
+                margin: 60px;
+            }
+            .star9 {
+                position: absolute;
+                left: 5px;
+                top: 80px;
+                margin: 60px;
+            }
+            .star10 {
+                position: absolute;
+                left: 10px;
+                top: 160px;
+                margin: 60px;
+            }
+            .star11 {
+                position: absolute;
+                left: 30px;
+                top: 450px;
+                margin: 60px;
+            }
+            .star12 {
+                position: absolute;
+                left: 60px;
+                top: 500px;
+                margin: 60px;
+            }
+            .star13 {
+                position: absolute;
+                left: 50px;
+                top: 700px;
+                margin: 60px;
+            }
+            .galaxy img {
+                max-width: 100%;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 450px;
+                background-image: url(image/globeimg.jpg);
+                z-index: -1;
+            }
+            .star7 {
+                position: absolute;
+                left: 45px;
+                top: 60px;
+                margin: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="star">
+        <div class="star1"> <i class="fa fa-star"></i> </div>
+        <div class="star2"> <i class="fa fa-star"></i> </div>
+        <div class="star3"> <i class="fa fa-star"></i> </div>
+        <div class="star4"> <i class="fa fa-star"></i> </div>
+        <div class="star5"> <i class="fa fa-star"></i> </div>
+        <div class="star6"> <i class="fa fa-star"></i> </div>
+        <div class="star7"> <i class="fa fa-star"></i> </div>
+        <div class="star8"> <i class="fa fa-star"></i> </div>
+        <div class="star9"> <i class="fa fa-star"></i> </div>
+        <div class="star10"> <i class="fa fa-star"></i> </div>
+        <div class="star11"> <i class="fa fa-star"></i> </div>
+        <div class="star12"> <i class="fa fa-star"></i> </div>
+        <div class="star13"> <i class="fa fa-star"></i> </div>
+        <div class="star14"> <i class="fa fa-star"></i> </div>
+    </div>
+    <div class="earth"></div>
+    <div class="galaxy"> <img src="image/galaxy1.jpg"> </div>
+    <div class="mars"> </div>
+</body>
+
+</html>
