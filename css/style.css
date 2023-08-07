@@ -1502,7 +1502,7 @@ a#myBtn {
 @media (max-width: 767px) {
   /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
   .slider_area .single_slider::before {
-    width: 100%;
+    width: 84%;
     max-width: 100%;
     content: '';
     background-size:contain;
