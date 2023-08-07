@@ -1512,7 +1512,7 @@ a#myBtn {
   /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
   .slider_area .single_slider::before {
     width: 370px;
-    height: 370px;
+    left:0;
     content: '';
     background-size: cover;
   }
