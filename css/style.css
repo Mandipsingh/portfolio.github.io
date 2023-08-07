@@ -1505,6 +1505,7 @@ a#myBtn {
     width: 100%;
     max-width: 100%;
     content: '';
+    background-size:contain;
   }
 }
 
