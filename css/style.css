@@ -13,6 +13,11 @@ body {
   font-style: normal;
 }
 
+li.behance_portfolio {
+    background: #4838d2;
+    padding: 10px;
+}
+
 .slider_text.text-center .download_cv {
   margin-left: 51%;
   margin-top: 1%;
