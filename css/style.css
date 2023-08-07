@@ -16,6 +16,8 @@ body {
 a.behance {
     text-decoration: none;
     color: #fff;
+  padding: 10px;
+    background: #4838d2;
 }
 
 .slider_text.text-center .download_cv {
