@@ -13,9 +13,9 @@ body {
   font-style: normal;
 }
 
-li.behance_portfolio {
-    background: #4838d2;
-    padding: 10px;
+a.behance {
+    text-decoration: none;
+    color: #fff;
 }
 
 .slider_text.text-center .download_cv {
