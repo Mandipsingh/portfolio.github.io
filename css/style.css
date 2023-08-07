@@ -1503,10 +1503,8 @@ a#myBtn {
   /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
   .slider_area .single_slider::before {
     width: 100%;
-    height: 300px;
     max-width: 100%;
     content: '';
-    background-size: cover;
   }
 }
 
