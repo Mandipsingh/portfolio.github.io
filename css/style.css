@@ -1509,6 +1509,7 @@ a#myBtn {
     background-size: contain;
     top: 42%;
     width: 70%;
+    left: 0;
   }
 }
 
