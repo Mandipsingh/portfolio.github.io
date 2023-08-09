@@ -18,6 +18,10 @@ body {
   margin-top: 1%;
 }
 
+.Appointment.mobile-call{
+  display:none;
+}
+
 /* line 12,  */
 .img {
   max-width: 100%;
@@ -2575,6 +2579,7 @@ a#myBtn {
     position: absolute;
     top: 32px;
     right: 94px;
+    display:block;
 }
 
 .slider_text.text-center .download_cv{
