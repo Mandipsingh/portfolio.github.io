@@ -13,6 +13,13 @@ body {
   font-style: normal;
 }
 
+.logo img {
+    width: 70px;
+    background: #4838d2;
+    border-radius: 50%;
+    box-shadow: 1px 1px 6px #000;
+}
+
 .slider_text.text-center .download_cv {
   margin-left: 51%;
   margin-top: 1%;
