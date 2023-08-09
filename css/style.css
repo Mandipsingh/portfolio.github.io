@@ -140,6 +140,13 @@ label {
   opacity: 1;
 }
 
+.logo img {
+    width: 70px;
+    background: #4838d2;
+    border-radius: 50%;
+    box-shadow: 1px 1px 6px #000;
+}
+
 /* line 94,  */
 *:-ms-input-placeholder {
   color: #cccccc;
