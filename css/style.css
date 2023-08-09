@@ -3414,10 +3414,6 @@ button#myBtn {
   .portfolio_image_area.dec_margin {
     padding: 50px 0;
   }
-
-  .portfolio_image_area .single_Portfolio .portfolio_thumb{
-    height: 200px;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
