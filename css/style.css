@@ -2243,7 +2243,6 @@ a#myBtn {
 /* line 58,  */
 .about_me .about_img .my_Pic img {
   width: 100%;
-    transform: scaleX(-1);
     background: rgba(96, 61, 217, 1);
 }
 
