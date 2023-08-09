@@ -2569,6 +2569,12 @@ a#myBtn {
     transform: translate(-50%, -50%);
 }
 
+  .Appointment.mobile-call {
+    position: absolute;
+    top: 32px;
+    right: 94px;
+}
+
 .slider_text.text-center .download_cv{
   margin-left: 30%;
     margin-top: 5%;
