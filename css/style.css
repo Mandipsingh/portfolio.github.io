@@ -1551,7 +1551,7 @@ a#myBtn {
 @media (max-width: 767px) {
   /* line 8, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
   .slider_area .single_slider {
-     height: 155vw;
+     height: 170vw;
   }
 }
 
@@ -2565,7 +2565,7 @@ a#myBtn {
   .slider_text.text-center {
     position: absolute;
     left: 41%!important;
-    top: -90px;
+    top: -105px;
     transform: translate(-50%, -50%);
 }
 
