@@ -13,10 +13,6 @@ body {
   font-style: normal;
 }
 
-.Appointment.mobile-call.d-one{
-  display:none;
-}
-
 .logo img {
     width: 70px;
     background: #4838d2;
