@@ -20,9 +20,6 @@ body {
     box-shadow: 1px 1px 6px #000;
 }
 
-.Appointment.mobile-call{
-  display:none;
-}
 
 .slider_text.text-center .download_cv {
   margin-left: 51%;
