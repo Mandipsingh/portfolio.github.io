@@ -2574,7 +2574,7 @@ a#myBtn {
   .slider_text.text-center {
     position: absolute;
     left: 41%!important;
-    top: -90px;
+    top: -105px;
     transform: translate(-50%, -50%);
 }
 
