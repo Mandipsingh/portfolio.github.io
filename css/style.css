@@ -2587,6 +2587,7 @@ a#myBtn {
     top: 32px;
     right: 94px;
     display:block!important;
+    z-index:1;
 }
 
 .slider_text.text-center .download_cv{
