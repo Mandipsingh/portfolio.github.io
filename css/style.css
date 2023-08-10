@@ -2578,6 +2578,10 @@ a#myBtn {
     transform: translate(-50%, -50%);
 }
 
+  .slicknav_btn{
+    top:-46px!important;
+  }
+
   .Appointment.mobile-call {
     position: absolute;
     top: 32px;
