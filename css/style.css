@@ -2582,7 +2582,7 @@ a#myBtn {
     position: absolute;
     top: 32px;
     right: 94px;
-    display:block;
+    display:block!important;
 }
 
 .slider_text.text-center .download_cv{
