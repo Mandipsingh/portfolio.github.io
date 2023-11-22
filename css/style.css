@@ -1635,7 +1635,7 @@ a#myBtn {
     top:-45px;
     margin-bottom: 9px;
     transform: translate(0, -50%);
-    margin-left: 49%;
+    margin-left: 35%;
     border-right: 0.15em solid orange;
     white-space: nowrap;
     animation: typing 3s steps(40, end) 3s infinite, blink-caret .75s step-end infinite;
