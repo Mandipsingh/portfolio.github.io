@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAMAYAN:पुरूषोत्तम RAM </title>
+    <link rel="icon" href="images/ram_dhyana.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAMAYAN,पुरूषोत्तम Purushottam ram,epic,story of ramayana,html story, history of bharat,sanatan dharma,ram,sita,laxman,hanuman,ravana,vibhisan,kumbkaran">
+    <meta name="keywords" content="RAMAYAN,पुरूषोत्तम Purushottam ram,epic,ram,sanatan dharma,bjp,modi,yogi,annamalia,hemant biswa, hinduism,govind,radhe radhe,jai shree ram, jaishreeram">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+   }
+
+   body{
+    background: #000;
+    --sparkler-gun-powder: #706677;
+  --sparkler-burnt: #252525;
+  --sparkler-ember: #ff9f1c;
+  font-family: monospace;
+   }
+
+   .main {
+    width: 1120px;
+    margin: 0 auto;
+    position:relative;
+    opacity: 0;
+}
+
+.arrow {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 197px;
+}
+
+
+   .ramayan{
+    padding:20px;
+    display: inline-block;
+   background-color: orange;
+   }
+
+   .ravan_div {
+    position: relative;
+    right: 0;
+}
+
+.ravan  {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 0px;
+    transition: height 4s;
+    object-fit: cover;
+    animation: ravan 4s linear;
+    animation-fill-mode: forwards;
+}
+
+img.ravan_left_head{
+    position: absolute;
+    left: 51%;
+    width: auto;
+    height: 189px!important;
+    animation: head 4s linear infinite;
+    object-fit: cover;
+    animation-delay: 4s;
+    opacity: 0;
+    
+}
+img.ravan_right_head{
+    position: absolute;
+    right: 0%;
+    width: auto;
+    height: 171px!important;
+    top: 18px;
+    animation: head 4s linear infinite;
+    animation-delay: 4s;
+    object-fit: cover;
+    opacity: 0;
+   
+}
+
+
+img.ram_01 {
+    opacity: 0;
+    top: 336px;
+    position: absolute;
+    left:52px;
+    
+}
+
+.jump{
+    animation: jump 4s linear;
+    animation-fill-mode: forwards;
+}
+   .ram {
+    position: absolute;
+    animation: ram 7s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+    opacity: 0;
+}
+
+
+   .col-1.row-1 {
+    text-align: center;
+    position: relative;
+}
+
+img.ram_02 {
+    position: absolute;
+    top: 300px;
+    left: 0;
+    animation: ram 7s linear;
+    z-index: 9999;
+}
+
+img.fire {
+    position: absolute;
+    right: 129px;
+    top: 547px;
+    width: 345px;
+    opacity: 0;
+    animation:fire 10s linear;
+    z-index: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes ram {
+    0%{
+        opacity: 0;
+    }
+
+     10%{
+        opacity: 0.1;
+    }
+
+     20%{
+        opacity: 0.2;
+    }
+
+     30%{
+        opacity: 0.3;
+    }
+
+     40%{
+        opacity: 0.4;
+    }
+
+
+     50%{
+        opacity: 0.5;
+    }
+
+    60%{
+        opacity: 0.6;
+    }
+
+    70%{
+        opacity: 0.7;
+    }
+
+    80%{
+        opacity: 0.8;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes ravan {
+    0%{
+        height: 0;
+    }
+
+     10%{
+        height: 74px;
+    }
+
+     20%{
+        height: 148px;
+    }
+
+     30%{
+        height:222px;
+    }
+
+     40%{
+        height: 296px;
+    }
+
+
+     50%{
+        height: 370px;
+    }
+
+    60%{
+        height: 444px;
+    }
+
+    70%{
+        height: 518px;
+    }
+
+    80%{
+        height: 592px;
+    }
+
+    90%{
+        height: 666px;
+    }
+
+    100%{
+        height: 740px;
+    }
+}
+
+@keyframes head {
+  0% { transform: translate(1px, 1px) rotate(0deg);opacity: 1; }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg);opacity: 1; }
+  
+}
+
+@keyframes jump {
+  0%{
+   top:368px;
+  
+  }
+
+  100%{
+    top:0px;
+  }
+}
+
+@keyframes shoot {
+  0%{
+   top:450px;
+   opacity: 1;
+  
+  }
+
+  100%{
+    top: 100px;
+    left: 164px;
+    opacity:0;
+  }
+}
+
+@keyframes fire {
+  0%{
+    opacity: 0;
+  
+  }
+  100%{
+    opacity: 0.2;
+  }
+}
+
+.barrier {
+    position: absolute;
+    z-index: 1;
+    right:0;
+    opacity: 0;
+}
+
+.barrier h2{
+    position: relative;
+    right: 156px;
+    top: 278px;
+    z-index: 1;
+    font-size: 44px;
+    color: #b40a0f;
+    -webkit-text-stroke: 1px #fff;
+}
+.barrier ul {
+    text-decoration: none;
+    
+}
+.barrier ul li {
+    color:#000;
+   display: inline-block;
+   font-size: 12px;
+   text-align: center;
+   font-weight: 700;
+}
+
+li.list1 {
+    position: absolute;
+    top: 69px;
+    right: 507px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list2 {
+    position: absolute;
+    top: 30px;
+    right: 455px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list3 {
+    position: absolute;
+    top: 6px;
+    right: 396px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list4 {
+    position: absolute;
+    top: 0px;
+    right: 335px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list5 {
+    position: absolute;
+    top: 0px;
+    right: 177px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list6 {
+    position: absolute;
+    top: 0px;
+    right: 109px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list7 {
+    position: absolute;
+    top: 7px;
+    width: 75px;
+    right: 27px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+li.list8 {
+    position: absolute;
+    top: 46px;
+    right: 16px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.history {
+    position: absolute;
+    color: orange;
+    top: 500px;
+    width: 25%;
+    text-align: center;
+    left: 268px;
+}
+
+li.list9 {
+    position: absolute;
+    top: 71px;
+    right: -32px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+    width: 63px;
+}
+
+li.list10 {
+    position: absolute;
+    top: 0px;
+    right: 259px;
+    background: #FFC107;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+
+.sparkler-light {
+  position: absolute;
+  width: 9rem;
+  height: 9rem;
+  margin-left: -4.4rem;
+  margin-top: -1.4rem;
+  animation: sparkler-light-anim 20s ;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+}
+
+.sparkler-light::after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 9rem;
+  height: 9rem;
+  background-color: rgba(255, 255, 230, 0.05);
+  animation: sparkler-light-pulsating 2s infinite linear;
+  animation-fill-mode: forwards;
+}
+
+img.lotus {
+    width: 61px;
+    position: absolute;
+    right: -33px;
+    top: -61px;
+    animation: lotus 4s infinite;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.spark {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  bottom: 4.3rem;
+  left: 4.35rem;
+  transform: rotate(var(--spark-rotate));
+  animation-fill-mode: forwards;
+  
+}
+
+.spark::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 0.1rem;
+  height: 2rem;
+  border-radius: 0.1rem;
+  opacity: 0;
+  background-color: white;
+  transform-origin: bottom center;
+  animation: sparkler-sparkle 0.5s infinite linear;
+  animation-delay: var(--spark-delay);
+  animation-fill-mode: forwards;
+}
+
+@keyframes sparkler-light-anim {
+  0%   {
+    bottom: -5.5rem;
+    opacity:0;
+  }
+  100% {
+    bottom: 6rem;
+    opacity: 1;
+  }
+}
+
+@keyframes lotus {
+  0%   {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  50%   {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+
+  80%   {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+}
+
+
+@keyframes sparkler-light-pulsating {
+  0%   {
+    transform: scale(1);
+  }
+  25%   {
+    transform: scale(1.1);
+  }
+  75%   {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkler-sparkle {
+  0%   {
+    transform: translateY(-0.5rem) scaleY(0.25);
+    opacity: 0;
+  }
+  10%   {
+    transform: translateY(-1rem) scaleY(0.5);
+    opacity: 0.35;
+  }
+  30%   {
+    transform: translateY(-2rem) scaleY(0.5);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-4rem) scaleY(1.5);
+    opacity: 0.7;
+  }
+  51% {
+    opacity: 0;
+    transform: translateY(-4rem) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.25);
+  }
+}
+.action_btn {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    top: 460px;
+    left: 400px;
+    animation: contribute 4s linear;
+    animation-delay: 20s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes contribute {
+  
+  0%{
+     opacity: 0;
+     visibility: hidden;
+  }
+
+  100%{
+opacity: 1;
+visibility: visible;
+  }
+}
+
+.action_btn p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.arrow_effect{
+    top: 368px;
+    left: 164px;
+    animation: shoot 4s linear;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+button.act_btn {
+    padding: 10px;
+    margin-top: 13px;
+    border-radius: 11px;
+    background: #d63000;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+img.bjp {
+    width: 71px;
+}
+
+.keshri{
+    color: orange;
+}
+
+.green{
+    color: green;
+}
+
+img.firearrow {
+    position: absolute;
+    width: 198px;
+    transform: rotate(177deg);
+    left: 178px;
+    top: 78px;
+    z-index: 1;
+    opacity: 0;
+
+}
+
+.arrow_release{
+    animation:firearrow 4s linear;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+/* .arrow_hit{
+    animation: arrow_hit 4s linear infinite;
+    animation-delay: 4s;
+} */
+
+img.arrowspark {
+    width: 115px;
+    position: absolute;
+    left: 719px;
+    z-index: 1;
+    top: 200px;
+    opacity: 0;
+}
+
+.ravan_disappear{
+    animation: ravan_dead 4s linear;
+    animation-delay: 3s;
+    opacity: 1;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes ravan_dead {
+0%{
+   opacity: 1;
+}
+
+20%{
+   opacity: 0.9;
+}
+
+40%{
+   opacity: 0.7;
+}
+
+60%{
+   opacity: 0.5;
+}
+
+80%{
+   opacity: 0.3;
+}
+100%{
+  opacity: 0;
+}
+}
+
+
+@keyframes firearrow {
+    0%{
+         transform: translate(0, 0)  rotate(177deg);
+       opacity: 1;
+    }
+
+    100%{
+        transform: translate(400px, 110px)  rotate(177deg);
+        opacity: 1;
+    }
+}
+
+img.hanuman {
+    width: 118px;
+    position: absolute;
+}
+
+p.bjpquote {
+    font-size: 26px;
+    margin-bottom: 22px;
+}
+
+button.startagain {
+  padding: 10px;
+    margin-top: 13px;
+    border-radius: 11px;
+    background: #d63000;
+    color: #fff;
+    width: 107px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: absolute;
+    visibility: hidden;
+    left: 88%;
+    transform: translate(-50%, -50%);
+    top: 377px;
+    z-index: 7;
+    cursor: pointer;
+}
+
+.social_message {
+    color: #fff;
+    text-align: left;
+    line-height: 35px;
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    top: 527px;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+img.bjp_msg {
+    width: 111px;
+    top: -130px;
+    position: absolute;
+    left: 223px;
+}
+
+p.vfbharat {
+    font-size: 35px;
+}
+
+p.jaishreeram {
+    margin-top: 123px;
+    margin-left: 22px;
+    font-weight: bold;
+}
+
+p.rama_quote.keshri {
+    position: absolute;
+    top: 182px;
+    width: 348px;
+    text-align: center;
+    left: 28px;
+    font-weight: bold;
+    font-size: 17px;
+    animation: ramaquote 7s linear;
+    animation-delay: 7s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.hide_para{
+visibility: hidden;
+}
+
+@keyframes ramaquote {
+    0%{
+        opacity: 0;
+    }
+
+     10%{
+        opacity: 0.1;
+    }
+
+     20%{
+        opacity: 0.2;
+    }
+
+     30%{
+        opacity: 0.3;
+    }
+
+     40%{
+        opacity: 0.4;
+    }
+
+
+     50%{
+        opacity: 0.5;
+    }
+
+    60%{
+        opacity: 0.6;
+    }
+
+    70%{
+        opacity: 0.7;
+    }
+
+    80%{
+        opacity: 0.8;
+    }
+
+    90%{
+        opacity: 0.9;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+img.thunder {
+    width: 311px;
+    position: absolute;
+    top: -398px;
+    left: -144px;
+    transform: rotate(141deg);
+    z-index: -1;
+}
+
+.welcoming_screen{
+  position: fixed;
+  width: 100%;
+  max-width: 1380px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 999;
+}
+
+img.lfthead.r1 {
+    position: absolute;
+    width: auto;
+    height: 189px!important;
+    animation: head 4s linear infinite;
+    object-fit: cover;
+    animation-delay: 4s;
+    right: 325px;
+    opacity: 0;
+    
+}
+
+.welcoming_screen h1{
+  position: absolute;
+    top: 356px;
+    left: 50%;
+    font-size: 40px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    z-index: 999;
+    background-color: rgba(0,0,0,0.7);
+    width: 35vw;
+    text-align: center;
+    display: inline-block;
+}
+
+p.bhagvadGita_quote.keshri {
+  font-size: 25px;
+    z-index: 9;
+    position: relative;
+    background-color: rgba(0,0,0,0.5);
+    width: 36%;
+    margin: 389px auto 0 auto;
+}
+
+.spark.sprkwc {
+    position: relative;
+}
+
+img.thunder.wc {
+  left: 97px;
+    top: 68px;
+    animation: ram 7s linear;
+    position: relative;
+}
+
+button.strt_btn {
+  position: absolute;
+    top: 460px;
+    left: 45%;
+    font-size: 19px;
+    padding: 7px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background: orange;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.spark.sprkwc::after{
+display: none;
+}
+
+img.ravan_last_meet {
+    
+    width: 250px;
+}
+
+.ravanlifelesson p {
+    width: 595px;
+    font-size: 15px;
+}
+
+img.arrowspark.ar.hope {
+    width: 21px;
+    top:229px;
+    margin-left:49px;
+}
+
+.creator{
+  position: absolute;
+    right: 0;
+    text-align: center;
+    top: 459px;
+    width: 259px;
+}
+
+p.thelastword.keshri {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+img.rama_shadow {
+    position: absolute;
+    left: 177px;
+}
+
+i.imp_note {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    right: 36%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+</style>
+</head>
+    <body>
+      
+      <div class="welcoming_screen"><img src="images/hanuman.png" class="hanuman" title="lord hanuman"  alt="hanumna_pic"/><img src="images/lord_rama.png" class="rama_shadow" alt="lord"> 
+        <p class="jaishreeram keshri" style="position: absolute;">जय श्री राम</p> <div class="spark sprkwc"><img src="images/thunder.gif" class="thunder wc" alt="thunder"></div> <img src="images/ram_dhyana.png" style="left: 114px" class="ram_02"  alt="rama_pic"/>
+        <img src="images/ravana.png" class="ravan" title="ravan"  alt="ravana_pic"/>
+           <img src="images/ravan_left_head.png" class="lfthead r1" alt="ravana_left_head">
+           <img src="images/ravan_right_head.png" class="ravan_right_head" alt="ravana_right_head">
+        <h1><span class="keshri">DHARMA</span> VS <span class="green">ADHARMA</span></h1>
+        <p class="bhagvadGita_quote keshri" style="text-align: center;">धर्म की जीत हो अधर्म का नाश हो</p>
+        <button class="strt_btn">Start Now</button>
+        <i class="imp_note">Laptop,desktop version, Mobile version coming soon...</i>
+        </div>
+        <div class="bgsound" id="ravan_voice">
+          <audio src="images/ravan_ego.mp3" autoplay loop="loop" class="stp" id="ravan_ego"></audio>
+      <audio src="images/rv1.mp3" autoplay id="ravan_laugh" class="stp"></audio>
+      <audio src="images/ravan_last_speech.mp3" autoplay id="ravan_last_speech" class="stp"></audio>
+    </div>
+        <div class="main">
+        <div class="col-1">
+            <div class="ram"> 
+                <div class="arrow">
+                    <div class="sparkler-light">
+                        <div class="spark"><img src="images/lotus.png" class="lotus" alt="lotus"></div>
+                        <div class="spark"><img src="images/thunder.gif" class="thunder" alt="thunder"></div>
+                        <div class="spark" style="--spark-rotate: 10deg; --spark-delay: 223ms"></div>
+                        <div class="spark" style="--spark-rotate: 20deg; --spark-delay: 844ms"></div>
+                        <div class="spark" style="--spark-rotate: 30deg; --spark-delay: 130ms"></div>
+                        <div class="spark" style="--spark-rotate: 40deg; --spark-delay: 747ms"></div>
+                        <div class="spark" style="--spark-rotate: 50deg; --spark-delay: 928ms"></div>
+                        <div class="spark" style="--spark-rotate: 60deg; --spark-delay: 392ms"></div>
+                        <div class="spark" style="--spark-rotate: 70deg; --spark-delay: 483ms"></div>
+                        <div class="spark" style="--spark-rotate: 80deg; --spark-delay: 621ms"></div>
+                        <div class="spark" style="--spark-rotate: 90deg; --spark-delay: 814ms"></div>
+                        <div class="spark" style="--spark-rotate: 100deg; --spark-delay: 802ms"></div>
+                        <div class="spark" style="--spark-rotate: 110deg; --spark-delay: 837ms"></div>
+                        <div class="spark" style="--spark-rotate: 120deg; --spark-delay: 238ms"></div>
+                        <div class="spark" style="--spark-rotate: 130deg; --spark-delay: 642ms"></div>
+                        <div class="spark" style="--spark-rotate: 140deg; --spark-delay: 58ms"></div>
+                        <div class="spark" style="--spark-rotate: 150deg; --spark-delay: 404ms"></div>
+                        <div class="spark" style="--spark-rotate: 160deg; --spark-delay: 576ms"></div>
+                        <div class="spark" style="--spark-rotate: 170deg; --spark-delay: 944ms"></div>
+                        <div class="spark" style="--spark-rotate: 180deg; --spark-delay: 635ms"></div>
+                        <div class="spark" style="--spark-rotate: 190deg; --spark-delay: 205ms"></div>
+                        <div class="spark" style="--spark-rotate: 200deg; --spark-delay: 91ms"></div>
+                        <div class="spark" style="--spark-rotate: 210deg; --spark-delay: 829ms"></div>
+                        <div class="spark" style="--spark-rotate: 220deg; --spark-delay: 969ms"></div>
+                        <div class="spark" style="--spark-rotate: 230deg; --spark-delay: 861ms"></div>
+                        <div class="spark" style="--spark-rotate: 240deg; --spark-delay: 201ms"></div>
+                        <div class="spark" style="--spark-rotate: 250deg; --spark-delay: 173ms"></div>
+                        <div class="spark" style="--spark-rotate: 260deg; --spark-delay: 967ms"></div>
+                        <div class="spark" style="--spark-rotate: 270deg; --spark-delay: 548ms"></div>
+                        <div class="spark" style="--spark-rotate: 280deg; --spark-delay: 392ms"></div>
+                        <div class="spark" style="--spark-rotate: 290deg; --spark-delay: 273ms"></div>
+                        <div class="spark" style="--spark-rotate: 300deg; --spark-delay: 6ms"></div>
+                        <div class="spark" style="--spark-rotate: 310deg; --spark-delay: 1ms"></div>
+                        <div class="spark" style="--spark-rotate: 320deg; --spark-delay: 854ms"></div>
+                        <div class="spark" style="--spark-rotate: 330deg; --spark-delay: 159ms"></div>
+                        <div class="spark" style="--spark-rotate: 340deg; --spark-delay: 60ms"></div>
+                        <div class="spark" style="--spark-rotate: 350deg; --spark-delay: 986ms"></div>
+                        <div class="spark" style="--spark-rotate: 360deg; --spark-delay: 559ms"></div>
+                      </div>
+                </div>
+           <img src="images/ram_dhyana.png" class="ram_02"  alt="rama_pic"/>
+           
+           <img src="images/hanuman.png" class="hanuman" title="lord hanuman"  alt="hanumna_pic"/> 
+           <p class="jaishreeram keshri">जय श्री राम</p>
+        </div>
+        <p class="rama_quote keshri">जब जब इस धरती पर पाप, अहंकार और अधर्म बढ़ेगा। तो उसका विनाश कर धर्म की पुन: स्थापना करने हेतु, मैं अवश्य अवतार लेता रहूंगा।</p>
+        <img style="left: 71px;opacity: 0.2;" src="images/lord_rama.png" class="rama_shadow" alt="lord">
+        <img src="images/ram3.png" class="ram_01" title="Lord Rama" alt="rama_pic"/>
+        <img src="images/arrowfire.png" class="firearrow ar" alt="fire_arrow">  
+        <img src="images/spark.gif" class="arrowspark ar" alt="spark"><img src="images/lotus.png" class="arrowspark ar hope" alt="lotus">
+        <div class="action_btn">
+            <button class="act_btn" title="Your Vote Matters" onclick="pauseAudio();">Shoot to Destroy Ravana Ego</button>
+            <br>
+            <!-- <p class="vfbharat">Vote for <span class="keshri">BH</span>AR<span class="green">AT</span></p> -->
+            <!-- <img src="images/lotus.png" class="bjp"  alt="bjp logo"> -->
+        </div>
+        <div class="social_message">
+          <div style="width: 100%; overflow: hidden;">
+            <div style="width: 345px; float: left;" class="ravanlifelesson"><p class="thelastword keshri">The Last Word Of Ravana</p><p>The story goes that after shooting the fatal arrow on the battlefield of Lanka, Ram told his brother, Lakshman, “Go to Ravana quickly before he dies and request him to share whatever knowledge he can. A brute he may be, but he is also a great scholar”.
+
+              At this Ravana said that if you have come to me as a student then you must sit at my feet because teachers must be respected and you want to learn lessons.
+              
+              
+              
+              Lakshman went to Ravana and this time he stood near his feet. Ravana seeing Lakshman standing near his feet told him secrets that would make anyone's life successful.
+              
+              Ravana said,  the most important lesson of life is that you must defer the bad action as much as you can and you must do good action without any delay and as much early as you can. If you follow this rule, you can save not only yourself but many other people from being damaged.</p>
+            <br><p class="keshri">But today's Ravana is crossing all limits and doing every anti-India activities to insult India and Indian culture. In the name of religion and caste, they are targeting India, Indian culture, spreading fake rumors and negativity and hindering the development of the nation. Do you want your family to feel safe then please vote thoughtfully and wisely.</p>
+          <p class="keshri">लेकिन आज के रावण सारी हदें पार कर रहे हैं और भारत और भारतीय संस्कृति का अपमान करने के लिए हर भारत विरोधी गतिविधियां कर रहे हैं। धर्म और जाति के नाम पर वे भारत, भारतीय संस्कृति को निशाना बना रहे हैं, फर्जी अफवाहें और नकारात्मकता फैला रहे हैं और राष्ट्र के विकास में बाधा बन रहे हैं। क्या आप चाहते हैं कि आपका परिवार सुरक्षित महसूस करे तो कृपया सोच-समझकर और समझदारी से मतदान करें।</p>
+        <i class="creator">Designed & Developed By:MANDIP SINGH <br>UI Developer & Designer <br>Proud Indian <br>techvidesh@gmail.com<br><span style="color:greenyellow;font-size: 16px;">*Actively Looking for a Job</span><br></i> </div>
+            <div style="margin-left: 620px;"> <img src="images/ravan_last_meet_with_ram.jpg" class="ravan_last_meet" alt="ram_meet_ravan"></div>
+       </div>
+          
+            <button class="startagain">Start Again</button>
+        </div>
+        <div class="ravan_div"> 
+            <div class="barrier">
+            <ul>
+                <li class="list1" title="Corruption">Corruption</li>
+                <li class="list2" title="Anti-Bharat">Anti-Bharat</li>
+                <li class="list3" title="Anti Dharma">Anti Dharma</li>
+                <li class="list4" title="Inhumane">Inhumane</li>
+                <li class="list5" title="Terrorists">Terrorists</li>
+                <li class="list6" title="Traitors">Traitors</li>
+                <li class="list8" title="Mafia's">scammers</li>
+                <li class="list7" title="Anti Development">Anti Development</li>
+                <li class="list9" title="Negativity">Negativity</li>
+                <li class="list10" title="Imposters">Imposters</li>
+
+            </ul>
+            <h2>आज का रावण</h2>
+            </div>
+           <img src="images/ravana.png" class="ravan" title="ravan"  alt="ravana_pic"/>
+           <img src="images/ravan_left_head.png" class="ravan_left_head" alt="ravana_left_head">
+           <img src="images/ravan_right_head.png" class="ravan_right_head" alt="ravana_right_head">
+            <img src="images/fire.gif" class="fire" alt="fire">
+        </div>
+          </div>
+          </div>
+        
+          <script>
+           $(document).ready(function(){
+            $("button.act_btn").click(function(){
+        $(".ram_02").css("visibility","hidden").fadeIn(function(){
+            $("img.ram_01").animate({opacity: '100%'});
+            $("img.ram_01").addClass("jump");
+            $(".sparkler-light").addClass("arrow_effect");
+            $(".firearrow").addClass("arrow_release"); 
+            $(".rama_quote keshri").css("visibility","hidden");
+            $(".arrowspark").delay(8000).animate({opacity: '100%'}).fadeIn(function(){
+                $(".ravan_div").addClass("ravan_disappear").delay(7000).animate({opacity: '100%'}).fadeIn(function(){
+                    $(".ar").css("visibility","hidden").fadeOut(function(){
+                        $(".ram_01").css("opacity","0");
+                        $(".rama_quote").addClass("hide_para");
+                        $(".action_btn").css("display","none");
+                        $(".startagain").css("visibility","visible");
+                        $(".social_message").css("visibility","visible");
+                        $(".ravan").css("display","none");
+                        $('audio').each(function(){
+                          this.pause(); // Stop playing
+                        this.currentTime = 0; // Reset time
+                        }); 
+                        document.getElementById("ravan_last_speech").play();
+                    });
+                });
+            });
+            
+            
+        })
+        
+      });
+      $(".strt_btn").click(function(){
+       $(".welcoming_screen").css("visibility","hidden");
+       $(".main").css("opacity","1");
+       document.getElementById("ravan_ego").play();
+       document.getElementById("ravan_laugh").play();
+       $(".barrier").delay(3000).animate({opacity: '100%'});
+      });
+
+});
+let refresh = document.querySelector(".startagain");
+refresh.onclick = ()=>{
+    window.location.reload(); //reload the current window
+}
+
+// setTimeout(function(){
+//       document.getElementById("ravan_ego").play();
+//       console.log('JAI SHREE RAM');
+//     }, 2000)
+
+
+          </script>
+
+<script>
+  let vol = document.getElementById("bg_sound");
+  let ego = document.getElementById("ravan_ego");
+    
+  function setHalfVolume() { 
+    vol.volume = 0.2;
+  } 
+
+  function setFullVolume() { 
+    ego.volume = 1.0;
+} 
+    
+  </script> 
+
+    </body>
+    </html>
+
+    
