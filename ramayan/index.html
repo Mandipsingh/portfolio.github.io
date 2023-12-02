@@ -1008,7 +1008,7 @@ i.imp_note {
         <img src="images/arrowfire.png" class="firearrow ar" alt="fire_arrow">  
         <img src="images/spark.gif" class="arrowspark ar" alt="spark"><img src="images/lotus.png" class="arrowspark ar hope" alt="lotus">
         <div class="action_btn">
-            <button class="act_btn" title="Your Vote Matters" onclick="pauseAudio();">Shoot to Destroy Ravana Ego</button>
+            <button class="act_btn" title="Your Vote Matters">Shoot to Destroy Ravana Ego</button>
             <br>
             <!-- <p class="vfbharat">Vote for <span class="keshri">BH</span>AR<span class="green">AT</span></p> -->
             <!-- <img src="images/lotus.png" class="bjp"  alt="bjp logo"> -->
@@ -1077,7 +1077,6 @@ i.imp_note {
                         $(".ravan").css("display","none");
                         $('audio').each(function(){
                           this.pause(); // Stop playing
-                        this.currentTime = 0; // Reset time
                         }); 
                         document.getElementById("ravan_last_speech").play();
                     });
