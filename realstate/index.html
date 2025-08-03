@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Dubai Real Estate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .Appointment {
+    position: absolute;
+    right: 15px;
+    margin: 10px;
+    background: #1bb21b;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow:2px 2px #000;
+}
+
+.Appointment:hover {
+    
+    transform: scale(0.9);
+    transition: 2s;
+    
+}
+
+i.fa.fa-phone {
+    color: #fff;
+}
+
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .wquote{
+       font-size: 5vw;
+  background: -webkit-linear-gradient(#21d54e 25%, #ffffff, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      background: #f4f4f4;
+      padding: 15px;
+    }
+
+    nav select, nav input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    .property-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .property-card {
+      position: relative;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .property-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .property-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .property-info {
+      padding: 15px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .modal-close {
+      position: absolute;
+    top: 8px;
+    right: 13px;
+    font-size: 22px;
+    cursor: pointer;
+    }
+
+    .modal-content button {
+      background-color: #203a43;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    footer {
+      background: #0f2027;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      
+
+    }
+
+    p.copyright {
+    font-size: 14px;
+    margin: 10px;
+}
+
+    .footer_content{
+display:flex;
+      justify-content: space-around;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    
+
+    @media (max-width: 600px) {
+      nav select, nav input {
+        width: 100%;
+      }
+      header p{
+        font-size: 3.5vw;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="Appointment" title="Call Now">
+                                <div class="book_btn d-lg-block">
+                                    <a href="tel:+918147174067" title="call Now"><i class="fa fa-phone"></i></a>
+                                </div>
+                            </div>
+  <header>
+    <h1 class="wquote">Welcome to Dubai Real Estate</h1>
+    <p>Find properties to Rent, Buy or Sell in Dubai</p>
+    <p style="padding-top: 20px;">"Where dream comes true"</p>
+  </header>
+
+  <nav>
+    <select id="purpose">
+      <option value="">-- Select Purpose --</option>
+      <option value="rent">Rent</option>
+      <option value="buy">Buy</option>
+      <option value="sell">Sell</option>
+    </select>
+
+    <select id="location">
+      <option value="">-- Select Location --</option>
+      <option value="downtown">Downtown Dubai</option>
+      <option value="marina">Dubai Marina</option>
+      <option value="jlt">Jumeirah Lake Towers</option>
+      <option value="burjkhalifa">burjkhalifa</option>
+    </select>
+
+    <input type="text" id="search" placeholder="Search by keyword..." />
+  </nav>
+
+  <div class="property-list" id="propertyList">
+    <!-- Property cards will be injected here -->
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <button onclick="alert('Purchase process started!')">Buy Property</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer_content">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Career</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <p class="copyright">2025@copyright</p>
+  </footer>
+
+  <script>
+    const properties = [
+      {
+        type: "rent",
+        location: "downtown",
+        title: "Luxury Apartment Downtown",
+        image: "img/1.JPG",
+        description: "2 Bed, 2 Bath with Burj Khalifa view"
+      },
+      {
+        type: "buy",
+        location: "marina",
+        title: "Sea View Villa Marina",
+        image: "img/2.WEBP",
+        description: "4 Bed, Private Pool & Beach Access"
+      },
+      {
+        type: "sell",
+        location: "jlt",
+        title: "Spacious Office JLT",
+        image: "img/4.JPG",
+        description: "Modern design, prime business location"
+      },
+
+      {
+        type: "buy",
+        location: "burjkhalifa",
+        title: "Sobha Flat",
+        image: "img/5.JPG",
+        description: "Modern design, prime business location"
+      }
+    ];
+
+    function renderProperties(filtered) {
+      const list = document.getElementById('propertyList');
+      list.innerHTML = "";
+      filtered.forEach(p => {
+        const card = `<div class="property-card">
+          <img src="${p.image}" alt="${p.title}">
+          <div class="overlay" onclick='showModal("${p.title}", "${p.description}", "${p.image}")'>View Details</div>
+          <div class="property-info">
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+          </div>
+        </div>`;
+        list.innerHTML += card;
+      });
+    }
+
+    function showModal(title, desc, img) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalDesc").innerText = desc;
+      document.getElementById("modalImg").src = img;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function filterProperties() {
+      const purpose = document.getElementById('purpose').value;
+      const location = document.getElementById('location').value;
+      const search = document.getElementById('search').value.toLowerCase();
+
+      const filtered = properties.filter(p => {
+        return (!purpose || p.type === purpose) &&
+               (!location || p.location === location) &&
+               (p.title.toLowerCase().includes(search) || p.description.toLowerCase().includes(search));
+      });
+
+      renderProperties(filtered);
+    }
+
+    document.getElementById('purpose').addEventListener('change', filterProperties);
+    document.getElementById('location').addEventListener('change', filterProperties);
+    document.getElementById('search').addEventListener('input', filterProperties);
+
+    renderProperties(properties);
+  </script>
+
+</body>
+</html>
+
