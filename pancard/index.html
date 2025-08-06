@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PAN + OTP Login</title>
+  <style>
+    body {
+    background-image: linear-gradient(orange,white,green);
+            background-image: -webkit-linear-gradient(orange,white,green);
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+     input#panInput {
+    width: 96%;
+    padding: 14px;
+    margin-top: 10px;
+    font-size: 39px;
+    border-radius: 5px;
+}
+
+      .container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 280px;
+    font-size: 32px;
+}
+    h2 {
+      margin-bottom: 15px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 30px;
+      border-radius: 5px;
+    }
+    input {
+      border: 1px solid #ccc;
+    }
+    
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .error {
+      color: red;
+      margin-top: 8px;
+    }
+    .otp-text {
+      color: green;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .info {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .info span {
+      font-weight: bold;
+    }
+    .timer {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+    
+    p.impnote {
+    margin: 0;
+    font-size: 14px;
+}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Step 1: PAN Input -->
+    <div id="step1">
+    <p class="impnote">**Fill dummy <span style="font-weight:bold">PAN</span> number to check prototype</p>
+      <h2>Sign in with PAN</h2>
+      <input type="text" id="panInput" placeholder="Enter PAN (ABCDE1234F)" maxlength="10" />
+      <div id="panError" class="error"></div>
+      <button onclick="sendOTP()">Send OTP</button>
+    </div>
+
+    <!-- Step 2: OTP Input -->
+    <div id="step2" class="hidden">
+      <h2>Enter OTP</h2>
+      <p class="otp-text">OTP sent: <span id="showOTP"></span> (for demo)</p>
+      <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" />
+      <div id="otpError" class="error"></div>
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <!-- Step 3: Home Page with Details -->
+    <div id="homeSection" class="hidden">
+      <h2>Welcome!</h2>
+      <div class="info">PAN: <span id="panDisplay"></span></div>
+      <div class="info">Name: <span>VIKSHIT BHARAT</span></div>
+      <div class="info">DOB: <span>07/07/07</span></div>
+      <div class="info">Status: <span style="color: green;">Active</span></div>
+      <div class="timer">Redirecting in <span id="countdown">5</span> seconds...</div>
+      
+    </div>
+   
+  </div>
+<italic style="font-family:cursive;position: absolute;bottom: 25px;color: #fff;">Designed & Developed: Mandip Singh</italic>
+  <script>
+    let otp = "";
+
+    function sendOTP() {
+      const pan = document.getElementById("panInput").value.trim().toUpperCase();
+      const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+      const panError = document.getElementById("panError");
+
+      if (!panRegex.test(pan)) {
+        panError.textContent = "Invalid PAN format. Use format like ABCDE1234F.";
+        return;
+      }
+
+      localStorage.setItem("userPAN", pan);
+      otp = Math.floor(100000 + Math.random() * 900000).toString();
+      document.getElementById("showOTP").textContent = otp;
+
+      panError.textContent = "";
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+
+    function verifyOTP() {
+      const userOTP = document.getElementById("otpInput").value.trim();
+      const otpError = document.getElementById("otpError");
+
+      if (userOTP === otp) {
+        otpError.textContent = "";
+        showHomePage();
+      } else {
+        otpError.textContent = "Incorrect OTP. Please try again.";
+      }
+    }
+
+    function showHomePage() {
+      const pan = localStorage.getItem("userPAN") || "N/A";
+      document.getElementById("panDisplay").textContent = pan;
+
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("homeSection").classList.remove("hidden");
+
+      // Countdown redirect
+      let countdown = 3;
+      const countdownEl = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        countdown--;
+        countdownEl.textContent = countdown;
+        if (countdown === 0) {
+          clearInterval(timer);
+          window.location.href = "pancard.html";
+        }
+      }, 1000);
+    }
+
+    
+  </script>
+
+</body>
+</html>
