@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PAN + OTP Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignIn Pancard Portal</title>
   <style>
     body {
     background-image: linear-gradient(orange,white,green);
@@ -13,13 +14,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height:100vh;
+      
     }
      input#panInput {
     width: 96%;
     padding: 14px;
     margin-top: 10px;
-    font-size: 39px;
+    font-size: 18px;
     border-radius: 5px;
 }
 
@@ -31,6 +33,7 @@
     text-align: center;
     height: 280px;
     font-size: 32px;
+    width:60%;
 }
     h2 {
       margin-bottom: 15px;
@@ -39,7 +42,7 @@
       width: 100%;
       padding: 12px;
       margin-top: 10px;
-      font-size: 30px;
+      font-size: 18px;
       border-radius: 5px;
     }
     input {
@@ -61,7 +64,7 @@
     }
     .otp-text {
       color: green;
-      font-size: 14px;
+      font-size: 18px;
       margin-top: 10px;
     }
     .info {
@@ -82,7 +85,13 @@
     font-size: 18px;
 }
 
-    
+.wc_note{
+background-image: linear-gradient(orange, #fff,green);
+    color: #fff;
+    text-shadow: 4px 1px #000;
+}
+
+
   </style>
 </head>
 <body>
@@ -92,7 +101,7 @@
     <!-- Step 1: PAN Input -->
     <div id="step1">
     <p class="impnote">**Fill dummy <span style="font-weight:bold">PAN</span> number to check prototype</p>
-      <h2>Sign in with PAN</h2>
+      <h2 style="font-size:25px">Sign in with PAN</h2>
       <input type="text" id="panInput" placeholder="Enter PAN (ABCDE1234F)" maxlength="10" />
       <div id="panError" class="error"></div>
       <button onclick="sendOTP()">Send OTP</button>
@@ -100,7 +109,7 @@
 
     <!-- Step 2: OTP Input -->
     <div id="step2" class="hidden">
-      <h2>Enter OTP</h2>
+      <h2 style="font-size:25px">Enter OTP</h2>
       <p class="otp-text">OTP sent: <span id="showOTP"></span> (for demo)</p>
       <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" />
       <div id="otpError" class="error"></div>
@@ -109,7 +118,7 @@
 
     <!-- Step 3: Home Page with Details -->
     <div id="homeSection" class="hidden">
-      <h2>Welcome!</h2>
+      <h2 class="wc_note">Welcome!</h2>
       <div class="info">PAN: <span id="panDisplay"></span></div>
       <div class="info">Name: <span>VIKSHIT BHARAT</span></div>
       <div class="info">DOB: <span>07/07/07</span></div>
