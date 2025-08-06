@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive PAN Card with Sidebar Buttons</title>
+  <style>
+    body {
+    background-image: linear-gradient(orange,white,green);
+      background-image: -webkit-linear-gradient(orange,white,green);
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    button{
+    cursor:pointer;
+    }
+
+    button.logout-btn {
+    position: absolute;
+   right: 0px;
+    border-radius: 10px;
+    background: #2a62a6;
+    color: #fff;
+    padding: 2px 4px;
+    cursor:pointer;
+    box-shadow: 1px 2px 1px #000;}
+
+
+    .controls {
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      padding: 0 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+      vertical-align: middle;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #4caf50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .pan-card {
+      max-width: 600px;
+      width: 100%;
+      height:394px;
+      background: url('panbg.webp');
+      background-size: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      position: relative;
+      color: #000;
+      opacity: 0.5;
+      pointer-events: none;
+      transition: all 0.3s ease-in-out;
+      border: 4px solid #999;
+      box-sizing: border-box;
+    }
+
+    .pan-card.active {
+      opacity: 1;
+      pointer-events: auto;
+      border-color: #4caf50;
+    }
+
+    .pan-left {
+      flex: 1 1 60%;
+      min-width: 220px;
+      padding-top:68px;
+    }
+
+    #confirmModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    #confirmModal .modal-content {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .sidebar-buttons button {
+    margin: 0 10px;
+}
+
+    #confirmModal button {
+      padding: 8px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #confirmYes { background: #4caf50; color: white; }
+    #confirmNo { background: #f44336; color: white; }
+
+
+    span#panNumber {
+    position: absolute;
+    padding-left: 0;
+    top: 258px;
+    font-weight: bold;
+    left: 20px;
+}
+
+    .pan-left h2 {
+      margin-top: 0;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .pan-field {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: inline-block;
+      min-width: 110px;
+    }
+
+    .value {
+      font-size: 1rem;
+      border-bottom: 1px dashed #333;
+      display: inline-block;
+      min-width: 140px;
+      padding: 2px 4px;
+      word-break: break-word;
+    }
+
+    .value[contenteditable="true"]:focus {
+      outline: 1px dashed #007bff;
+      background: #ffffffaa;
+    }
+
+    .pan-right {
+      flex: 1 1 35%;
+      min-width: 140px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .pan_numberbtn {
+    padding-left: 131px;
+    padding-top: 4px;
+}
+
+    .photo {
+      width: 100px;
+    height: 100px;
+    border: 2px solid #888;
+    margin: 0 auto 10px;
+    border-radius: 6px;
+    object-fit: contain;
+    position: absolute;
+    right: 25px;
+    top: 252px;
+    }
+
+    .signature {
+    font-family: cursive;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    position: absolute;
+    left: 17px;
+    top: 303px;
+}
+
+    .action-buttons {
+      margin-top: 20px;
+      display: none;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 600px;
+      width: 100%;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+
+    .pan-fieldd.dob {
+    padding-top: 27px;
+}
+
+.pan-field.fa_name {
+    padding-top: 14px;
+}
+
+    .action-buttons button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      min-width: 100px;
+    }
+
+    .accept-btn {
+      background: #4caf50;
+      color: white;
+    }
+
+    .reject-btn {
+      background: #f44336;
+      color: white;
+    }
+
+    .action-buttons.show {
+      display: block;
+    }
+
+    /* Sidebar buttons container */
+    .sidebar-buttons {
+      display: flex;
+    flex-direction: row;
+    gap: 12px;
+    min-width: 90px;
+    height: 35px;
+    position: absolute;
+    bottom: 11px;
+    left: 50%;
+    top: 415px;
+    transform: translate(-50%, -50%);
+    }
+
+    .pan-logo {
+  display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.pan-logo img {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+}
+
+.open-modal-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .open-modal-btn:hover {
+      background-color: #0056b3;
+    }
+
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .download-btn {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .download-btn:hover {
+      background: #45a049;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table.custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    .custom-table th, .custom-table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    #aboutModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow:scroll;
+}
+
+    .about-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .custom-table thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .custom-table tbody tr:hover {
+      background-color: #f1f1f1;
+      transition: background 0.3s ease;
+    }
+
+    /* Individual sidebar button */
+    .sidebar-buttons button {
+      background-color: #2a62a6;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .pan-field.pan-num {
+    padding-top: 35px;
+}
+
+    .sidebar-buttons button:hover {
+      background-color: #4caf50;
+      transform: scale(1.05);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 650px) {
+      .pan-card {
+        flex-wrap: wrap;
+        padding-right: 15px; /* reduce padding for small */
+      }
+
+      span#panNumber {
+       top: 257px;
+}
+
+
+
+.sidebar-buttons::-webkit-scrollbar{
+  width: 5px;
+  height: 1px;
+}
+
+      .sidebar-buttons {
+        flex-direction: row;
+        margin: 15px 0 0 0;
+        min-width: auto;
+        width: 100%;
+        gap: 10px;
+        overflow:auto;
+      }
+
+      .sidebar-buttons button {
+        flex: 1 1 auto;
+        font-size: 0.85rem;
+        padding: 8px 6px;
+      }
+
+      .pan-right {
+        flex-basis: 100%;
+        margin-top: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pan-left h2 {
+        font-size: 1.25rem;
+      }
+      
+
+      .pan-field {
+        font-size: 0.9rem;
+      }
+
+      .label {
+        min-width: 90px;
+        font-size: 0.85rem;
+      }
+
+      .value {
+        min-width: 120px;
+        font-size: 0.9rem;
+      }
+
+      .photo {
+    width: 90px;
+    height: 90px;
+    right: 9px;
+    top: 278px;
+}
+
+      .action-buttons button {
+        flex: 1 1 45%;
+        min-width: unset;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inside .controls section -->
+<div class="controls">
+<button class="logout-btn" onclick="logout()">Logout</button>
+  <label>PAN Card:</label>
+  <span id="panStatus" style="margin-left: 10px; font-weight: bold; color: red;">Deactive</span>
+
+  <label class="toggle-switch">
+    <input type="checkbox" id="togglePanCard" />
+    <span class="slider"></span>
+  </label>
+
+  <!-- New: Show/Hide PAN checkbox -->
+
+  <div class="action-buttons" id="actionButtons">
+    <p>Requested By <span style="font-weight:bold">Jianx pvt ltd:</span></p>
+    <button class="accept-btn">Accept</button>
+    <button class="reject-btn" id="rejectbtn" onclick="reject()">Reject</button>
+  </div>
+</div>
+
+
+  <div class="pan-card" id="panCard">
+    
+    <div class="pan-left">
+      <!-- <h2>INCOME TAX DEPARTMENT</h2> -->
+      <div class="pan-field user_name">
+        <span class="label">VIKSHIT BHARAT</span>
+        <!-- <span class="value" contenteditable="true">Enter Name</span> -->
+      </div>
+      <div class="pan-field fa_name">
+        <span class="label">TRIMURTI BHARATAM</span>
+        <!-- <span class="value" contenteditable="true">Enter Father's Name</span> -->
+      </div>
+      <div class="pan-fieldd dob">
+        <span class="label">07/07/07</span>
+        <!-- <span class="value" contenteditable="true">DD/MM/YYYY</span> -->
+      </div>
+      <!-- Update this inside the .pan-card content -->
+<div class="pan-field pan-num">
+  <span class="label" id="panValue">MAKAS0079K</span> 
+  <label>
+      <input type="checkbox" id="togglePanNumber"/>
+      Show
+    </label>
+</div>
+
+    </div>
+
+    <div class="pan-right">
+      <div class="signature">VikshitBh47</div>
+    </div>
+    <div class="pan_user_name"><img src="pyara_bharat.jpg" class="photo"></div>
+
+    <!-- Sidebar buttons on the right -->
+    <div class="sidebar-buttons">
+<button type="button" title="about" class="about-btn" onclick="openAboutModal()">About</button>
+      
+      <button type="button" title="History" class="open-modal-btn" onclick="openModal()">History</button>
+      <button type="button" title="Services">Services</button>
+      <button type="button" title="Setting">Setting</button>
+      <button type="button" class="adhr_btn">Link Adhaar Card</button>
+      <button type="button" title="Help">Help</button>
+    </div>
+    <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAboutModal()">&times;</span>
+      <h3>What is PAN CARD?</h3>
+      <p>PAN card is a GOV ID acts as legal identity verification and photo for various purposes, including obtaining a gas connection,opening a bank account,loan etc in INDIA.</p>
+      
+      <h3>About this Prototype</h3>
+       <p>This feature is designed and developed to keep the data secure as per the current situation of online loan fraud and cyber Crime.</p>
+        <p></p>Today,India is moving like a bullet train in every sectors specially digital india which makes our life easy and comfortable by introducing UPI -unified Payments interface but at the same time we don't forget that online frauds & cyber crime has also increased due to digitization.So,in the era of digitization we must keep our eyes open and alert when we upload personal & sensitive data to any unknown app for loan or verification.
+        As i realized that we must make high security app where our PAN or adhaar details will be registered and if anyone try to verify our documents with or without our consent,then user will get request from particular bank or person for verification.For verification respective company or bank needs User approval depends on his/her action.
+        Even user can deactive or activate his PANCARD temporary if he don't required for certain time period.</p>
+        <p>Users can check their Pancard history of active or closed loans, pancard correction etc. in history tab section.
+        We can add many features to avoid online frauds.</p>
+        <p>"I am <span style="font-weight: bold;">Mandip singh</span> a professional ui/ux developer and designer who likes and interested solving real time issues which customers or consumers are facing digitally.
+        Currently looking for a job who is looking for the best"
+       </p>
+    </div>
+  </div>
+          <!-- Modal -->
+  <div id="tableModal" class="modal">
+    <div class="modal-content" id="tableSection">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Requested Date</th>
+              <th>Action</th>
+              <th>Reason</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>State bank of india</td>
+              <td>07-Aug-2025</td>
+              <td>Accepted</td>  
+              <td>Education loan</td>
+              <td style="color: grey; font-weight: bold;">Pending</td>
+            </tr>
+            <tr>
+              <td>jian loan pvt ltd</td>
+              <td>11-Aug-2025</td>
+              <td>Rejected</td>  
+              <td>personal Loan</td>
+              <td style="color: red; font-weight: bold;">Rejected by user(fake request)</td>
+            </tr>
+             <tr>
+              <td>Car loan</td>
+              <td>07-Aug-2024</td>
+              <td>Accepted</td>  
+              <td>Car Loan</td>
+              <td style="color: green; font-weight: bold;">Active</td>
+            </tr>
+            <tr>
+              <td>Rahul Sharma</td>
+              <td>05-Aug-2025</td>
+              <td></td>
+              <td>Incorrect DOB</td>
+              <td style="color: grey; font-weight: bold;">Pending</td>
+            </tr>
+            <tr>
+              <td>Priya Mehta</td>
+              <td>04-Aug-2025</td>
+              <td></td>
+              <td>Card Lost</td>
+              <td style="color: green; font-weight: bold;">updated</td>
+            </tr>
+            <tr>
+              <td>Amit Verma</td>
+              <td>01-Aug-2025</td>
+              <td></td>
+              <td>Correction Father’s Name</td>
+              <td style="color: grey; font-weight: bold;">proccessing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- Confirmation Modal -->
+  <div id="confirmModal">
+    <div class="modal-content">
+      <p>Are you sure you want to Accept?</p>
+      <button id="confirmYes">Yes</button>
+      <button id="confirmNo">No</button>
+    </div>
+  </div>
+  
+  <script>
+  const toggle = document.getElementById('togglePanCard');
+  const panCard = document.getElementById('panCard');
+  const buttons = document.getElementById('actionButtons');
+const panStatus = document.getElementById('panStatus');
+  const panValue = document.getElementById('panValue');
+  const togglePanNumber = document.getElementById('togglePanNumber');
+
+const rejectBtn = document.getElementById('rejectbtn');
+  const acceptBtn = document.querySelector('.accept-btn');
+    const confirmModal = document.getElementById('confirmModal');
+    const confirmYes = document.getElementById('confirmYes');
+    const confirmNo = document.getElementById('confirmNo');
+
+  // Get full PAN from data attribute
+  const fullPan = panValue.dataset.full;
+
+  // Function to mask PAN (e.g., show last 5 chars)
+  function maskPan(pan) {
+    return 'XXXXX' + pan.slice(5);
+  }
+
+  // On page load: apply masking
+  window.addEventListener('DOMContentLoaded', () => {
+    panValue.textContent = maskPan(fullPan);
+  })
+
+  toggle.addEventListener('change', () => {
+    panCard.classList.toggle('active');
+    buttons.classList.toggle('show', toggle.checked);
+  });
+
+</script>
+<script>
+  toggle.addEventListener('change', () => {
+  const isActive = toggle.checked;
+  panStatus.textContent = isActive ? 'Active' : 'Deactive';
+  panStatus.style.color = isActive ? '#4caf50' : '#f44336';
+});
+
+ 
+    acceptBtn.addEventListener('click', () => {
+      confirmModal.style.display = 'flex';
+    });
+
+    
+
+    confirmYes.addEventListener('click', () => {
+      confirmModal.style.display = 'none';
+      alert("PAN Card Verification Request Accepted!");
+      buttons.style.display = 'none';
+    });
+
+    
+
+
+    confirmNo.addEventListener('click', () => {
+      confirmModal.style.display = 'none';
+    });
+
+  </script>
+<script>
+    function openModal() {
+      document.getElementById('tableModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('tableModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('tableModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById('tableSection');
+      const opt = {
+        margin: 0.5,
+        filename: 'pan_card_requests.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
+<script>
+    function openAboutModal() {
+      document.getElementById('aboutModal').style.display = 'block';
+    }
+
+    function closeAboutModal() {
+      document.getElementById('aboutModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside content
+    window.onclick = function(event) {
+      const modal = document.getElementById('aboutModal');
+      if (event.target === modal) {
+        closeAboutModal();
+      }
+    };
+function logout() {
+      localStorage.removeItem("userPAN");
+      window.location.href = "index.html"; // Redirect to sign-in
+    }
+
+  </script>
+
+  <script>
+    const fullPAN = localStorage.getItem("userPAN") || "MAKAS0079K";
+    const maskedPAN = "•••••" + fullPAN.slice(5);
+
+    // Show masked PAN by default
+    panValue.textContent = maskedPAN;
+    togglePanNumber.checked = false;
+
+    togglePanNumber.addEventListener("change", () => {
+      panValue.textContent = togglePanNumber.checked ? fullPAN : maskedPAN;
+    });
+  </script>
+
+  <script>
+    
+    rejectBtn.addEventListener('click', () => {
+      
+     buttons.style.display = 'none';
+     alert("PAN Card Verification Request Rejected!");
+    });
+
+    
+      
+    
+    </script>
+
+</body>
+</html>
