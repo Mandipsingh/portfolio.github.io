@@ -1,0 +1,134 @@
+ :root {
+      font-family: system-ui, sans-serif;
+      color-scheme: light dark;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 1rem;
+    }
+    form {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 600px;
+    }
+    label {
+      display: grid;
+      gap: 0.25rem;
+    }
+    .feed {
+      display: grid;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+    .post {
+        background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+    }
+    .post__time {
+      display: block;
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+    .post__actions {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .post__actions button {
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    /* Carousel styles */
+    .post__media-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      max-width: 100%;
+      margin-top: 0.5rem;
+    }
+    .media-box {
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000; /* adds black padding around */
+}
+
+.media-box img,
+.media-box video {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain; /* keeps aspect ratio without scaling oddly */
+  display: block;
+}
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .carousel-btn.prev { left: 5px; }
+    .carousel-btn.next { right: 5px; }
+
+     
+  
+
+    .category {
+      background: #007BFF;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 30px;
+    display: block;
+    margin-bottom: 10px;
+    
+    }
+    .timestamp {
+      display: block;
+      margin-top: 5px;
+      font-size: 12px;
+      color: #555;
+    }
+    .actions {
+      margin-top: 10px;
+    }
+    .actions button {
+      width: auto;
+      padding: 6px 12px;
+      margin-right: 8px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .edit-btn {
+      background: #28a745;
+    }
+    .edit-btn:hover {
+      background: #1e7e34;
+    }
+    .delete-btn {
+      background: #dc3545;
+    }
+    .delete-btn:hover {
+      background: #a71d2a;
+    }
+
+    
+
+    
