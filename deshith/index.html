@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup & Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-image: -webkit-linear-gradient(90deg, #ec6721, white, #146a37);
+      background-image: linear-gradient(90deg, #ec6721, white, #146a37);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .Wclogo{
+     color:#000;
+    }
+    .container {
+      width: 350px;
+      background-image: linear-gradient(90deg, #1a6d3c, #ffffff, #ed6a26);
+      background-image: -webkit-linear-gradient(90deg,#1a6d3c, #ffffff, #ed6a26);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .logo {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+    img.logo.Wclogo {
+    width: 250px;
+}
+    h2 {
+      margin-bottom: 20px;
+      
+    }
+    input {
+      width: 93%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    #userName{text-transform: capitalize;}
+    input:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 8px rgba(79,172,254,0.3);
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, #2048d0, #121213);
+      background: -webkit-linear-gradient(45deg, #2048d0, #121213);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    a {
+      color: #4facfe;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #message {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      display: none;
+    }
+    #message.success {
+      color: #fff;
+    }
+    #message.error {
+      color: red;
+    }
+    #welcome_page {
+      display: none;
+      color: #000;
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(-20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+    @media (max-width: 400px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+
+    .login_page,.signup_page{
+      color:#fff;
+    }
+
+    .logo {
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Signup Form -->
+  <div class="container" id="signupPage">
+   <h2 class="logo" alt="logo">देशहित</h2>
+    <h2>Sign Up</h2>
+    <input type="text" id="signupName" placeholder="Enter Name" required>
+    <input type="email" id="signupEmail" placeholder="Enter Email" required>
+    <input type="password" id="signupPassword" placeholder="Enter Password" required>
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a href="#" onclick="showLogin()" class="login_page">Login</a></p>
+    <div id="message"></div>
+  </div>
+
+  <!-- Login Form -->
+  <div class="container" id="loginPage" style="display:none;">
+   <h2 class="logo" alt="logo">देशहित</h2>
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Enter Email" required>
+    <input type="password" id="loginPassword" placeholder="Enter Password" required>
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="#" onclick="showSignup()" class="signup_page">Sign Up</a></p>
+    <div id="loginMessage" style="display:none; color:red; font-weight:bold; margin-top:10px;"></div>
+  </div>
+
+  <!-- Main Page -->
+  <div id="welcome_page">
+     <img src="img/logo_nw.png" class="logo Wclogo" alt="Logo">
+    <h1>Welcome, <span id="userName"></span> 🎉 to <span class="logo" style="color:#000;">देशहित</span> (DESHIT) (prototype version)</h1>
+    <p>Proudly Made In India by Mandip Singh (Software Eng , ui/ux Developer & Designer)</p>
+    <p>Your Registered Email is:<span id="userEmail"></span></p>
+    <p style="margin-top:10px; font-size:14px;">Redirecting to home page in 5 seconds...</p>
+
+  </div>
+
+  <script>
+    function signup() {
+      let name = document.getElementById("signupName").value.trim();
+      let email = document.getElementById("signupEmail").value.trim();
+      let password = document.getElementById("signupPassword").value.trim();
+      let message = document.getElementById("message");
+
+      if(name && email && password){
+        if(!validateEmail(email)){
+          message.style.display = "block";
+          message.textContent = "Invalid email format!";
+          message.className = "error";
+          return;
+        }
+
+        // Generate random User ID
+        let userId = "USR" + Math.floor(10000 + Math.random() * 90000);
+
+        let user = {id: userId, name, email, password};
+        localStorage.setItem("user", JSON.stringify(user));
+
+        message.style.display = "block";
+        message.textContent = "✅ Successfully signed up! Please login.";
+        message.className = "success";
+
+        // Redirect to login after short delay
+        setTimeout(showLogin, 1500);
+      } else {
+        message.style.display = "block";
+        message.textContent = "⚠ Please fill all fields.";
+        message.className = "error";
+      }
+    }
+
+    function login() {
+      let email = document.getElementById("loginEmail").value.trim();
+      let password = document.getElementById("loginPassword").value.trim();
+      let user = JSON.parse(localStorage.getItem("user"));
+      let loginMessage = document.getElementById("loginMessage");
+
+      if(user && user.email === email && user.password === password){
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("welcome_page").style.display = "block";
+        document.getElementById("userName").textContent = user.name;
+        document.getElementById("userEmail").textContent = user.email;
+
+        // Redirect to home.html after 5 seconds
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 5000);
+
+      } else {
+        loginMessage.style.display = "block";
+        loginMessage.textContent = "❌ Invalid credentials!";
+      }
+    }
+
+    function showLogin(){
+      document.getElementById("signupPage").style.display = "none";
+      document.getElementById("loginPage").style.display = "block";
+      document.getElementById("message").style.display = "none";
+    }
+
+    function showSignup(){
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("signupPage").style.display = "block";
+    }
+
+    function validateEmail(email) {
+      let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email.toLowerCase());
+    }
+</script>
+
+</body>
+</html>
