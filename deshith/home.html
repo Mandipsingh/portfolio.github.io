@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESHIT | देशहित </title>
+    <link rel="icon" href="img/logo_nw.png" type="image/icon type">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/dropdown.css">
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/post.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/post.js"></script>
+   
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+           <div class="logo"><h2 style="margin:13px;" alt="logo">देशहित</h2></div>
+  <button class="avatar-btn" id="avatarBtn" aria-haspopup="true" aria-expanded="false">
+   <div class="profile_img" id="profile_avatar">
+                    <img src="img/white.jpg" class="user-dp" title="change profile image">
+                </div>
+  </button>
+
+  <!-- Dropdown -->
+  <nav class="dropdown" id="dropdown" role="menu" aria-label="Profile menu">
+
+    <!-- PROFILE SECTION -->
+    <div class="section profile-section">
+      <button id="logoutBtn" onclick="logout()">Logout</button>
+      <div class="profile-image-wrapper">
+        <img id="profileDP" src="img/white.jpg" class="dp-img_dp" alt="Profile Image">
+        <!-- <label for="dpInput" class="dp-upload-btn">Upload DP</label> -->
+    <input type="file" id="dpInput" accept="image/*" hidden>
+        <div class="user_Name"><strong id="displayName"></strong></div>
+        <div class="user_Id id-box"><span class="uid-id">uid: </span>
+    <span id="copyMsg" class="copy-success">Copied!</span><strong id="displayId" class="id-text" title="copy"></strong></div>
+        <label for="dpInput" class="edit-avatar-btn dp-upload-btn" title="Change Profile Image">✎</label>
+        <button class="dp-remove-btn" onclick="removeDP()" title="Remove Profile Image">X</button>
+      </div>
+      <div class="follow-stats">
+        <button type="button" id="followersBtn">
+          <strong id="followersCount">128</strong>
+          <span>Followers</span>
+        </button>
+        <button type="button" id="followingBtn">
+          <strong id="followingCount">256</strong>
+          <span>Following</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>NAVIGATION</h4>
+      <ul class="menu">
+        <li><a href="#home" role="menuitem">🏠 Home</a></li>
+        <li><a href="#about" role="menuitem">ℹ️ About</a></li>
+        <li><a href="#settings" role="menuitem">⚙️ Settings</a></li>
+        <li><button type="button" id="aiAssistantBtn" role="menuitem">🤖 AI Assistant</button></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h4>DISCOVER</h4>
+      <ul class="menu">
+        <li><a href="#trending" role="menuitem">🔥 Trending</a></li>
+        <li><a href="#explore" role="menuitem">🔎 Explore</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h4>YOUR STUFF</h4>
+      <ul class="menu">
+        <li><button type="button" id="bookmarkBtn" role="menuitem">🔖 Bookmarks</button></li>
+        <li><button type="button" id="meetBtn" role="menuitem">📅 Meeting history</button></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- Followers / Following Modal -->
+<div class="followers-modal" id="followersModal-menu" aria-hidden="true" role="dialog" aria-labelledby="followersTitle">
+  <div class="modal-card" role="document">
+    <button class="modal-close" data-close>&times;</button>
+    <h2 id="followersTitle">People</h2>
+    <p id="followersType"></p>
+    <ul class="list" id="peopleList"></ul>
+  </div>
+</div>
+
+<!-- Bookmarks / Meetings Modal -->
+<div class="followers-modal" id="genericModal" aria-hidden="true" role="dialog" aria-labelledby="genericTitle">
+  <div class="modal-card" role="document">
+    <button class="modal-close" data-close>&times;</button>
+    <h2 id="genericTitle"></h2>
+    <ul class="list" id="genericList"></ul>
+  </div>
+</div>
+
+<!-- AI Assistant Modal -->
+<div class="ai-modal" id="aiModal" aria-hidden="true" role="dialog" aria-labelledby="aiTitle">
+  <div class="modal-card" role="document">
+    <button class="modal-close" data-close>&times;</button>
+    <h2 id="aiTitle">AI Assistant (demo)</h2>
+    <div class="ai-container">
+      <div class="ai-messages" id="aiMessages" aria-live="polite"></div>
+      <form class="ai-input" id="aiForm">
+        <input type="text" id="aiInput" placeholder="Ask me something..." autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+            </div>
+            <div class="language_btn">
+                <label for="langSelect" data-i18n="choose_language_label"></label>
+                <select id="langSelect" style="width:4.3rem">
+                    <option value="en">English</option>
+                    <option value="as">অসমীয়া (Assamese)</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="brx">बड़ो (Bodo)</option>
+                    <option value="doi">डोगरी (Dogri)</option>
+                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                    <option value="ks">كٲشُر (Kashmiri)</option>
+                    <option value="kok">कोंकणी (Konkani)</option>
+                    <option value="mai">मैथिली (Maithili)</option>
+                    <option value="ml">മലയാളം (Malayalam)</option>
+                    <option value="mni">মৈতৈলোন্ (Manipuri)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                    <option value="ne">नेपाली (Nepali)</option>
+                    <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                    <option value="sa">संस्कृत (Sanskrit)</option>
+                    <option value="sat">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</option>
+                    <option value="sd">سنڌي (Sindhi)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="ur">اردو (Urdu)</option>
+                </select>
+            </div>
+            <div class="meeting open-btn" id="openOverlay" title="Meeting"><i class="fa fa-user-plus"></i></div>
+            <div class="live_bx hdr sticklive">
+                <div class="live_txt" title="live_news" id="liveBtn"><span>LIVE</span></div>
+       <!-- Overlay -->
+  <div class="overlaylive" id="overlaylive"></div>
+
+  <!-- Sliding Panel -->
+  <div class="live-panel" id="livePanel">
+    <h2 style="text-align: center;">Live News / Meetings / Events</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Topic</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>News</td>
+          <td>Budget 2025 Updates</td>
+          <td>
+            <button class="action-btn join-btn">Join</button>
+            <button class="action-btn watch-btn">Watch</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Meeting</td>
+          <td>Mission Vikshit bharat Review</td>
+          <td>
+            <button class="action-btn join-btn">Join</button>
+            <button class="action-btn watch-btn">Watch</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Conference</td>
+          <td>Tech Innovations</td>
+          <td>
+            <button class="action-btn join-btn">Join</button>
+            <button class="action-btn watch-btn">Watch</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Event</td>
+          <td>Make in India Event</td>
+          <td>
+            <button class="action-btn join-btn">Join</button>
+            <button class="action-btn watch-btn">Watch</button>
+          </td>
+        </tr>
+        <tr id="sensexRow">
+    <td>Sensex</td>
+    
+   
+  </tr>
+      </tbody>
+    </table>
+<div class="live-sensex">
+  <iframe 
+    src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=BSE%3ASENSEX&locale=in" 
+    width="100%" 
+    height="220" 
+    frameborder="0" 
+    allowtransparency="true" 
+    scrolling="no">
+  </iframe>
+</div>
+    <button class="cancel-btn" id="cancelBtn">Close</button>
+  </div>
+
+                <!-- Meeting Overlay -->
+                <div class="overlay" id="overlay">
+
+                    <div class="box">
+                    <button class="close-btn" id="closeOverlay">Close</button>
+                        <h2 style="position: absolute;top: 0;font-size: 20px;color:#fff">Schedule Meeting</h2>
+                        <!-- Column 1: Meeting Link -->
+                        <div class="meeting-link">
+                            <label>Meeting Link</label>
+                            <input type="text" id="meetingLink" value="https://meet.example.com/12345" readonly />
+                            <button class="btn-copy" id="copyLinkBtn">Copy Link</button>
+                            <button class="btn-share" id="shareLinkBtn">Share</button>
+                        </div>
+
+                        <!-- Column 2: Description & Date/Time -->
+                        <div class="description">
+                            <label>Description</label>
+                            <textarea id="meetingDescription" placeholder="Add meeting details here..."></textarea>
+                            <label>Meeting Date</label>
+                            <input type="date" id="meetingDate" />
+                            <label>Meeting Time</label>
+                            <input type="time" id="meetingTime" />
+                        </div>
+
+                        <!-- Column 3: User Details -->
+                        <div class="user-details">
+                            <label>Host Name</label>
+                            <input type="text" id="hostName" placeholder="Enter Host Name" required />
+                            <label>Your Name</label>
+                            <input type="text" id="userName" placeholder="Mandip Singh" required />
+                            <label>Recipients (comma separated)</label>
+                            <input type="text" id="userEmail" placeholder="mandip@example.com, rajveer@example.com" required />
+                            <button class="followers-btn" id="openFollowers">Add Users</button>
+                            <small id="emailError" class="error-text" style="display:none;">Please enter valid email(s).</small>
+                            <label>Role</label>
+                            <input type="text" id="userRole" placeholder="Organizer" />
+                        </div>
+
+                        <!-- Send Invite Button -->
+                        <button class="send-invite" id="sendInviteBtn">Send Invite</button>
+                    </div>
+                    
+                </div>
+
+
+
+                <!-- Followers Modal -->
+                <div class="followers-modal" id="followersModal">
+                    <div class="followers-box">
+                        <button class="followers-close-btn" id="closeFollowers" style="top:13px;right:13px">X</button>
+                        <h3>Select Followers</h3>
+                        <div id="followersList">
+                            <!-- Followers dynamically added -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toast" id="toast"></div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="tabs sticky">
+                <div class="tabs_bx">
+                    <div class="tab active" data-index="0">For You</div>
+                    <div class="tab" data-index="1">Following </div>
+                    <div class="tab" data-index="2">Groups</div>
+                    <div class="tab" data-index="3">Your state</div>
+                </div>
+            </div>
+            <div class="cabinet" id="cabinetModal">
+    <div class="cabinet-content">
+      <button class="close-btn" id="closeCabinetBtn">Close ✖</button>
+      <h2>Indian Cabinet Ministers</h2>
+      <input type="text" id="filterInput" placeholder="Search Cabinet ministers by name, post, department, or responsibility...">
+
+      <table id="cabinetTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Responsibilities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Narendra Modi</td>
+            <td>Prime Minister</td>
+            <td>Prime Minister's Office</td>
+            <td>Policy formulation, national governance, oversight of ministries</td>
+          </tr>
+          <tr>
+            <td>Amit Shah</td>
+            <td>Home Minister</td>
+            <td>Ministry of Home Affairs; Ministry of Cooperation</td>
+            <td>Internal security, law and order, cooperative sector development</td>
+          </tr>
+          <tr>
+            <td>Rajnath Singh</td>
+            <td>Defence Minister</td>
+            <td>Ministry of Defence</td>
+            <td>National defense policy, armed forces administration</td>
+          </tr>
+          <tr>
+            <td>Nirmala Sitharaman</td>
+            <td>Finance Minister</td>
+            <td>Ministry of Finance; Ministry of Corporate Affairs</td>
+            <td>Economic policy, taxation, corporate governance</td>
+          </tr>
+          <tr>
+            <td>S. Jaishankar</td>
+            <td>External Affairs Minister</td>
+            <td>Ministry of External Affairs</td>
+            <td>Foreign relations, diplomacy, international cooperation</td>
+          </tr>
+          <tr>
+            <td>Ashwini Vaishnaw</td>
+            <td>Ministry of Railways</td>
+            <td>Ministry of Information and Broadcasting | Ministry of Electronics and Information Technology</td>
+            <td>Foreign relations, diplomacy, international cooperation</td>
+          </tr>
+          <tr>
+            <td>Shivraj Singh Chouhan</td>
+            <td>Agriculture Minister</td>
+            <td>Ministry of Agriculture & Farmers’ Welfare; Ministry of Rural Development</td>
+            <td>Agricultural policy, rural development, farmer welfare</td>
+          </tr>
+          <tr>
+            <td>Jagat Prakash Nadda</td>
+            <td>Health Minister</td>
+            <td>Ministry of Health & Family Welfare; Ministry of Chemicals & Fertilizers</td>
+            <td>Public health, family welfare, chemical industry regulation</td>
+          </tr>
+          <tr>
+            <td>Nitin Gadkari</td>
+            <td>Road Transport Minister</td>
+            <td>Ministry of Road Transport & Highways</td>
+            <td>Infrastructure development, road safety, highway construction</td>
+          </tr>
+          <tr>
+            <td>Piyush Goyal</td>
+            <td>Ministry of Communications</td>
+            <td>Ministry of Development of North Eastern Region</td>
+            <td>Trade policy, consumer affairs, public distribution systems</td>
+          </tr>
+          <tr>
+            <td>Shri Kiren Rijiju</td>
+            <td>Ministry of Parliamentary Affairs</td>
+            <td>Ministry of Minority Affairs</td>
+            <td>Ensuring smooth functioning of Parliament by coordinating between the government and Parliamentarians. Encouraging constructive debates and discussions, and maintaining order during parliamentary proceedings.</td>
+          </tr>
+          <tr>
+            <td>Shri Jyotiraditya M. Scindia</td>
+            <td>Minister of Civil Aviation</td>
+            <td>Modernizing the aviation sector, enhancing connectivity, and ensuring safety and efficiency in air travel</td>
+            <td>Formulating national policies and programs for the development and regulation of civil aviation in India</td>
+          </tr>
+          <tr>
+            <td>Shri Chirag Paswan</td>
+            <td>Ministry of Food Processing Industries</td>
+            <td>Creating job opportunities in rural and semi-urban areas by promoting food processing industries.</td>
+            <td>Developing and implementing policies to promote the growth of the food processing sector in India.</td>
+          </tr>
+          <tr>
+            <td>Smt. Annpurna Devi</td>
+            <td>Women and Child Development Minister</td>
+            <td>Ministry of Women and Child Development</td>
+            <td>Policies for women empowerment and child welfare</td>
+          </tr>
+          <tr>
+            <td>Dharmendra Pradhan</td>
+            <td>Education Minister</td>
+            <td>Ministry of Education; Ministry of Skill Development & Entrepreneurship</td>
+            <td>Educational reforms, skill development initiatives</td>
+          </tr>
+          <tr>
+            <td>Prakash Javadekar</td>
+            <td>Environment Minister</td>
+            <td>Ministry of Environment, Forest and Climate Change</td>
+            <td>Environmental protection, climate change mitigation</td>
+          </tr>
+          <tr>
+            <td>Shri Hardeep Singh Puri</td>
+            <td>Ministry of Petroleum and Natural Gas</td>
+            <td>Oil and Gas Exploration and Production</td>
+            <td>Developing national policies and regulations for the petroleum and natural gas sector to ensure energy security and sustainable development.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+        
+       <div class="story_container">
+    <div class="story-container" id="storyContainer">
+      <!-- Add button -->
+       
+      <div class="story" id="storyCircle">
+        <div class="add-btn" onclick="openAddModal()">+</div>
+        <p>Your Story</p>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Story Modal -->
+  <div class="modal" id="addStoryModal">
+    <div class="modal-content">
+      <h2>Add Story</h2>
+      <input type="text" id="username" placeholder="Enter username">
+      <input type="text" id="storyText" placeholder="Enter story text">
+      <select id="mood">
+        <option value="😊">😊 Happy</option>
+        <option value="😢">😢 Sad</option>
+        <option value="🔥">🔥 Excited</option>
+        <option value="😎">😎 Cool</option>
+      </select>
+      <input type="text" id="tag" placeholder="Add tag (@someone)">
+      <input type="file" id="storyImage" accept="image/*">
+      <br><br>
+      <button class="btn-add" onclick="addStory()">Add</button>
+      <button class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- View Story Modal -->
+  <div class="modal" id="viewStoryModal">
+    <div class="modal-content">
+      <span onclick="closeViewModal()" style="position:absolute;top:10px;right:15px;cursor:pointer;font-size:24px;color:#fff">&times;</span>
+      <img id="viewImg" src="" alt="Story">
+      <h2 id="viewUsername"></h2>
+      <p id="viewText"></p>
+    </div>
+  </div>
+
+
+            <div class="tab-container">
+                <div class="pencil_edit" title="share your Thoughts">
+                    <i class="fa fa-pencil create-post-btn openPopup" id="openPopup"></i>
+                </div>
+                <!-- Popup Modal -->
+
+                <div class="modal" id="postModal">
+                    <div class="modal-content">
+                        <button class="close-btn" id="closePopup">X</button>
+                        <h2>Create a Post</h2>
+                       <form id="postForm">
+      <input type="hidden" id="editIndex">
+      <textarea id="content" placeholder="Write something..." required></textarea>
+      <select id="category" required>
+        <option value="">Select category</option>
+        <option value="News">News</option>
+        <option value="Sports">Sports</option>
+        <option value="Tech">Tech</option>
+        <option value="Lifestyle">Lifestyle</option>
+      </select>
+      <label>Upload Image:</label>
+      <input type="file" id="imageUpload" accept="image/*">
+      <label>Upload Video:</label>
+      <input type="file" id="videoUpload" accept="video/*">
+      <button type="submit">Post</button>
+    </form>
+
+                    </div>
+                </div>
+
+                
+
+<div class="scroll-text">**Lets Make our "BHARAT" Great Again. Join our Mission to achieve Modi Ji Vision for Viksit Bharat 2047.</div>
+                <div class="tab-content-wrapper" id="tabContents">
+                     
+                    <!--for you tab start here-->
+                    <div class="tab-content foryou-tab" id="post-01" style="max-height:none">
+                      
+                        <div class="post_container" id="post_container">
+                           
+                          <div id="postsContainer"><div class="post">
+      <div class="bx_head">
+                                <div class="follow_btn">Follow</div>
+                                <div class="bx_hd profile_avatar_post">
+                                    <img src="img/Mandipsingh.jpg">
+                                </div>
+                                <div class="post_user_name">Mandip singh</div>
+                                <div class="dropdown_ellipsis" id="dropdown_ellipsis">
+  <span class="ellipsis">⋮</span>
+  <div class="menu">
+    <button>Edit</button>
+    <button>Delete</button>
+    <hr>
+    <button>Share</button>
+    <button>Report</button>
+    <button class="close-btn">✖</button>
+  </div>
+</div>
+                            </div>
+       <p class="post-content">
+         <span class="category">Tech</span>
+          <span class="short-text">"देशहित" means "National Interest" which is designed prototype &amp; idea to keep all government work up to date &amp; transparency specially related to infra...</span>
+          <span class="full-text hidden">"देशहित" means "National Interest" which is designed prototype &amp; idea to keep all government work up to date &amp; transparency specially related to infrastructure, swacch Bharat &amp; gov schemes &amp; future vision (2047) This app will basically connect government &amp; citizens to highlight their issues related to their respective state,city,Zone,panchayat etc. Here,indian citizens of their respective state or city can upload or complain to their respective department's high authority and same progress will be updated time to time on this portal. Even CENTRAL GOVERNMENT can directly connect with their Ministers,MLA,Mayors etc to get all update &amp; progress on assign works.This not only help government but also gives hopes &amp; create positivity among Citizens.Through this platform we can easily monitor public sentiments about individuals MLA,MPs,MINISTERS of their respective state,district,constituencies etc. In this platform indian citizens can rate and vote to any MPs,MLA, minsters to their respective constituencies according to their work and behaviour. If we want to achieve vision of vikshit bharat 2047 then we must start tracking all MPs, MLA's,MINISTER's assign work &amp; progress Report on weekly or daily basis. This platform will be register only through Indian Gov id as this platform will be only for indian citizens so that we can focus on our nation development &amp; growth and our vision for viksit bharat. Now, We have to work like a private employees following deadline,quality and work on time.No excuses anymore. I Mandip singh, software engineer by profession ready to contribute for the Bright Vision of DEVELOPED BHARAT.</span>
+        </p>
+        <span class="read-more" onclick="toggleRead(this)">Read More</span>
+       
+        <span class="timestamp">📅 8/18/2025, 1:12:21 PM</span>
+        <div class="media-box"><img src="img/techai.jfif" alt="Uploaded Image"></div>
+        
+
+        <div class="bx_footer">
+         <div class="comment_bx reaction-buttons">
+            <div onclick="commentOnPost(0)">
+                                    <i class="fa fa-comment-o" title="comment"></i></div>
+                                    <i class="fa fa-retweet" title="repost"></i>
+                                    <button class="reaction-btn" data-reaction="happy" title="happy">😍
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="sad" title="sad">😔
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="unhappy" title="angry">😡<span class="count">0</span></button>
+
+                                    <i class="fa fa-share-square-o" title="share"></i>
+                                </div>
+        </div>
+
+       
+
+        
+      </div></div>
+                            
+                        </div>
+                  <div class="post_container" id="post_container">
+                           
+                          <div id="postsContainer"><div class="post">
+      <div class="bx_head">
+                                <div class="follow_btn">Follow</div>
+                                <div class="bx_hd profile_avatar_post">
+                                    <img src="img/modiji.jpg">
+                                </div>
+                                <div class="post_user_name">PM MODI</div>
+                                <div class="dropdown_ellipsis" id="dropdown_ellipsis">
+  <span class="ellipsis">⋮</span>
+  <div class="menu">
+    <button>Edit</button>
+    <button>Delete</button>
+    <hr>
+    <button>Share</button>
+    <button>Report</button>
+    <button class="close-btn">✖</button>
+  </div>
+</div>
+                            </div>
+       <p class="post-content">
+         <span class="category">News</span>
+          <span class="short-text">New chapter is being added to India's 'Make in India' journey: PM Modi on Gujarat's EV plant.</span>
+          <span class="full-text hidden">Make In India & Swadeshi is our First Priotiy.Buy only Make in India Products and support & contribute in India's Economy.
+            A day before additional 25 per cent tariffs from the United States kick in, effectively raising import duties on India to 50 per cent, 
+            Prime Minister Narendra Modi on August 26 pushed for swadeshi and Make in India.New chapter is being added to India's 'Make in India' journey.</span>
+        </p>
+        <span class="read-more" onclick="toggleRead(this)">Read More</span>
+       
+        <span class="timestamp">📅 8/28/2025, 10:15:21 PM</span>
+         <div class="media-box"><img src="img/makeinindia.png"/></div>
+
+        <div class="bx_footer">
+         <div class="comment_bx reaction-buttons">
+            <div onclick="commentOnPost(0)">
+                                    <i class="fa fa-comment-o" title="comment"></i></div>
+                                    <i class="fa fa-retweet" title="repost"></i>
+                                    <button class="reaction-btn" data-reaction="happy" title="happy">😍
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="sad" title="sad">😔
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="unhappy" title="angry">😡<span class="count">0</span></button>
+
+                                    <i class="fa fa-share-square-o" title="share"></i>
+                                </div>
+        </div>
+
+       
+
+        
+      </div></div>
+                            
+                        </div>
+                    </div>
+                    
+
+
+<div id="postsContainer"></div>
+
+                    <!--foryou tab end here-->
+
+                    <!--following tab start here-->
+                    <div class="tab-content following-tab">
+                        <div class="post_container">
+                       <div class="post">
+      <div class="bx_head">
+                                <div class="follow_btn">Follow</div>
+                                <div class="bx_hd profile_avatar_post">
+                                    <img src="img/modiji.jpg">
+                                </div>
+                                <div class="post_user_name">PM MODI</div>
+                                <div class="dropdown_ellipsis" id="dropdown_ellipsis">
+  <span class="ellipsis">⋮</span>
+  <div class="menu">
+    <button>Edit</button>
+    <button>Delete</button>
+    <hr>
+    <button>Share</button>
+    <button>Report</button>
+    <button class="close-btn">✖</button>
+  </div>
+</div>
+                            </div>
+       <p class="post-content">
+         <span class="category">News</span>
+          <span class="short-text">New chapter is being added to India's 'Make in India' journey: PM Modi on Gujarat's EV plant.</span>
+          <span class="full-text hidden">Make In India &amp; Swadeshi is our First Priotiy.Buy only Make in India Products and support &amp; contribute in India's Economy.
+            A day before additional 25 per cent tariffs from the United States kick in, effectively raising import duties on India to 50 per cent, 
+            Prime Minister Narendra Modi on August 26 pushed for swadeshi and Make in India.New chapter is being added to India's 'Make in India' journey.</span>
+        </p>
+        <span class="read-more" onclick="toggleRead(this)">Read More</span>
+       
+        <span class="timestamp">📅 8/28/2025, 10:15:21 PM</span>
+         <div class="media-box"><img src="img/makeinindia.png"></div>
+
+        <div class="bx_footer">
+         <div class="comment_bx reaction-buttons">
+            <div onclick="commentOnPost(0)">
+                                    <i class="fa fa-comment-o" title="comment"></i></div>
+                                    <i class="fa fa-retweet" title="repost"></i>
+                                    <button class="reaction-btn" data-reaction="happy" title="happy">😍
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="sad" title="sad">😔
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="unhappy" title="angry">😡<span class="count">0</span></button>
+
+                                    <i class="fa fa-share-square-o" title="share"></i>
+                                </div>
+        </div>
+
+       
+
+        
+      </div>
+                        </div>
+
+                        <div class="post_container">
+                       <div class="post">
+      <div class="bx_head">
+                                <div class="follow_btn">Follow</div>
+                                <div class="bx_hd profile_avatar_post">
+                                    <img src="img/yogi.jpg">
+                                </div>
+                                <div class="post_user_name">CM Yogi Adityanath</div>
+                                <div class="dropdown_ellipsis" id="dropdown_ellipsis">
+  <span class="ellipsis">⋮</span>
+  <div class="menu">
+    <button>Edit</button>
+    <button>Delete</button>
+    <hr>
+    <button>Share</button>
+    <button>Report</button>
+    <button class="close-btn">✖</button>
+  </div>
+</div>
+                            </div>
+       <p class="post-content">
+         <span class="category">News</span>
+          <span class="short-text">"देशहित" means "National Interest" App which is designed prototype & idea to keep all government work up to date & transparency specially related to infrastructure, swacch Bharat & gov schemes & future vision (2047</span>
+          <span class="full-text hidden">This app will basically connect government & citizens to highlight their issues related to their respective state,city,Zone,panchayat etc.
+                                        Here,indian citizens of their respective state or city can upload or complain to their respective department's high authority and same progress will be updated time to time on this portal.
+                                        Even CENTRAL GOVERNMENT can directly connect with their Ministers,MLA,Mayors etc to get all update & progress on assign works.This not only help government but also
+                                        gives hopes & create positivity among Citizens.
+                                        If we want to achieve vision of vikshit bharat 2047 the we must start tracking all MPs, MLA's,MINISTER's assign work & progress Report on weekly or daily basis.</span>
+        </p>
+        <span class="read-more" onclick="toggleRead(this)">Read More</span>
+       
+        <span class="timestamp">📅 8/28/2025, 10:15:21 PM</span>
+         <div class="media-box"><img src="img/makeinindia.png"></div>
+
+        <div class="bx_footer">
+         <div class="comment_bx reaction-buttons">
+            <div onclick="commentOnPost(0)">
+                                    <i class="fa fa-comment-o" title="comment"></i></div>
+                                    <i class="fa fa-retweet" title="repost"></i>
+                                    <button class="reaction-btn" data-reaction="happy" title="happy">😍
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="sad" title="sad">😔
+                                        <span class="count">0</span></button>
+                                    <button class="reaction-btn" data-reaction="unhappy" title="angry">😡<span class="count">0</span></button>
+
+                                    <i class="fa fa-share-square-o" title="share"></i>
+                                </div>
+        </div>
+
+       
+
+        
+      </div>
+                        </div>
+
+                                          </div>
+                    <!--following tab end here-->
+
+                    <div class="tab-content">
+                        <h3 style="color: #fff;margin-left: 20px;">Groups:</h3>
+                    </div>
+                    <div class="tab-content your-state-tab">
+                        <img style="background:#fff;padding:10px" src="img/Emblem_of_India.svg" class="gov_logo">
+                        <h2 style="font-size:25px" class="state_title eng">Your state, district & constituency authorities</h2>
+                        <h5 style="font-size:15px" class="state_title hin">आपका राज्य, जिला और निर्वाचन क्षेत्र के अधिकारी</h5>
+
+
+                        <div id="loading" class="loading" style="display:none;">Loading data…</div>
+                        <div id="error" class="error" style="display:none;">Failed to load data. See console for details.</div>
+
+                        <div class="filters">
+                            <div>
+                                <label for="stateSelect">State</label>
+                                <select id="stateSelect">
+                                    <option value="">All States</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="districtSelect">District</label>
+                                <select id="districtSelect" disabled>
+                                    <option value="">All Districts</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="constituencySelect">Constituency</label>
+                                <select id="constituencySelect" disabled>
+                                    <option value="">All Constituencies</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="searchBox">Search (Name / Party / Position)</label>
+                                <input type="text" id="searchBox" placeholder="Type to search…">
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button id="applyBtn">Apply Filters</button>
+                            <button id="resetBtn" class="secondary">Reset</button>
+                        </div>
+
+                        <div class="summary" id="summary"></div>
+
+                        <div class="table-wrap">
+                            <table id="resultTable">
+                                <thead>
+                                    <tr>
+                                        <th>State</th>
+                                        <th>District</th>
+                                        <th>Constituency</th>
+                                        <th>Position</th>
+                                        <th>Name</th>
+                                        <th>Party</th>
+                                        <th>Contact</th>
+                                        <th>Term Start</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                      </table>
+                            <div class="no-results" id="noResults" style="display:none;">No results found</div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--post container end here-->
+        </div>
+        <div class="box_bottom_gap">
+            <!--<span>देशहित</span>-->
+        </div>
+        <div class="footer">
+            <div class="tab" data-index="0">
+            <i class='fa fa-home' title="home"></i></div>
+            <i class='fa fa-search search-icon' title="search" id="searchIcon"></i>
+            <i class='fa fa-headphones' title="help 24*7"></i>
+            <span class="open-modal-btn" id="openCabinetBtn"><img src="img/Goi.png" width="50px" height="50px" title="Goi Ministers details(Center)" /></span>
+            <i class='fa fa-bell-o' title="notification" id="notificationBell"></i>
+            <div class="notification-box" id="notificationBox">
+             <ul>
+    <li>New comment on your post</li>
+    <li>PM MODI liked your photo</li>
+    <li>Meeting at 3 PM</li>
+  </ul>
+</div>
+            <i class='fa fa-envelope-o' title="Direct message"></i>
+
+        </div>
+    </div>
+    <script>
+        var element = document.getElementsByClassName("tabs_bx")[0];
+        element.addEventListener("click", myFunction);
+
+        function myFunction(e) {
+            if (document.querySelector('.tabs_bx .active') !== null) {
+                document.querySelector('.tabs_bx .active').classList.remove('active');
+
+            }
+            e.target.className = "tab active";
+        }
+        // $('#right-arrow').click(function () {
+        //         var currentSlide = $('.slide.active');
+        //         var nextSlide = currentSlide.next();
+        //         currentSlide.fadeOut(300).removeClass('active');
+        //         nextSlide.fadeIn(300).addClass('active');
+        //         if (nextSlide.length == 0) {
+        //             $('.slide').first().fadeIn(300).addClass('active');
+        //         }
+        //     });
+
+        //     $('#left-arrow').click(function () {
+        //         var currentSlide = $('.slide.active');
+        //         var prevSlide = currentSlide.next();
+        //         currentSlide.fadeOut(300).removeClass('active');
+        //         prevSlide.fadeIn(300).addClass('active');
+        //         if (prevSlide.length == 0) {
+        //             $('.slide').first().fadeIn(300).addClass('active');
+        //         }
+        //     });
+        //slider
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollRight = document.getElementById("right-arrow");
+            const scrollLeft = document.getElementById("left-arrow");
+            const productListContainer = document.querySelector(".story_container");
+
+            console.log("Initial Scroll Left:", productListContainer.scrollLeft);
+
+            scrollRight.addEventListener("click", function() {
+                console.log("Clicked!");
+                productListContainer.scrollBy({
+                    top: 0,
+                    left: 620,
+                    behavior: 'smooth'
+                });
+                console.log("Scroll Left After:", productListContainer.scrollLeft);
+            });
+
+            scrollLeft.addEventListener("click", function() {
+                console.log("Clicked!");
+                productListContainer.scrollBy({
+                    top: 0,
+                    left: -620,
+                    behavior: 'smooth'
+                });
+                console.log("Scroll Left After:", productListContainer.scrollLeft);
+            });
+
+
+        });
+    </script>
+    <script>
+      const reactions = document.querySelectorAll('.reaction-btn'); 
+let currentActive = null;
+let currentReaction = null;
+
+reactions.forEach(reaction => {
+    reaction.addEventListener('click', () => {
+        const selectedType = reaction.dataset.reaction;
+        const countEl = reaction.querySelector('.count');
+        let count = parseInt(countEl.textContent);
+
+        // CASE 1: Toggle OFF if same icon clicked
+        if (selectedType === currentReaction) {
+            reaction.classList.remove('active');
+            currentReaction = null;
+            currentActive = null;
+
+            count = Math.max(count - 1, 0);
+            countEl.textContent = count;
+            if (count === 0) countEl.classList.remove('visible');
+            return;
+        }
+
+        // CASE 2: Switch to another reaction
+        if (currentActive) {
+            const prevCountEl = currentActive.querySelector('.count');
+            let prevCount = parseInt(prevCountEl.textContent);
+
+            prevCount = Math.max(prevCount - 1, 0);
+            prevCountEl.textContent = prevCount;
+            if (prevCount === 0) prevCountEl.classList.remove('visible');
+            currentActive.classList.remove('active');
+        }
+
+        // CASE 3: Activate new
+        reaction.classList.add('active');
+        count = count + 1;
+        countEl.textContent = count;
+        if (count > 0) countEl.classList.add('visible');
+
+        currentActive = reaction;
+        currentReaction = selectedType;
+    });
+});
+
+        
+    </script>
+    <script>
+      function toggleRead(el) {
+      const shortText = el.previousElementSibling.querySelector('.short-text');
+      const fullText = el.previousElementSibling.querySelector('.full-text');
+
+      if (fullText.classList.contains('hidden')) {
+        fullText.classList.remove('hidden');
+        shortText.classList.add('hidden');
+        el.innerText = "Read Less";
+      } else {
+        fullText.classList.add('hidden');
+        shortText.classList.remove('hidden');
+        el.innerText = "Read More";
+      }
+    }
+
+
+    </script>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contentWrapper = document.getElementById('tabContents');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update tab active class
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Slide content horizontally
+                const index = parseInt(tab.dataset.index);
+                contentWrapper.style.transform = `translateX(-${index * 100}%)`;
+            });
+        });
+    </script>
+
+    <script>
+        let RAW_DATA = []; // full dataset from fetch
+        let filteredData = []; // current filtered view
+
+        /* Elements */
+        const stateSelect = document.getElementById('stateSelect');
+        const districtSelect = document.getElementById('districtSelect');
+        const constituencySelect = document.getElementById('constituencySelect');
+        const searchBox = document.getElementById('searchBox');
+        const applyBtn = document.getElementById('applyBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const tableBody = document.getElementById('tableBody');
+        const noResults = document.getElementById('noResults');
+        const summaryEl = document.getElementById('summary');
+        const loadingEl = document.getElementById('loading');
+        const errorEl = document.getElementById('error');
+
+        boot();
+
+        async function boot() {
+            showLoading(true);
+            try {
+                const res = await fetch('data.json', {
+                    cache: 'no-store'
+                });
+                if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+
+                const json = await res.json();
+                RAW_DATA = Array.isArray(json) ? json : (json.records || json.data || []);
+                filteredData = [...RAW_DATA];
+
+                populateStates();
+                setDefaultFilters(); // <-- Set default selection
+                applyFilters(); // <-- Apply filters immediately
+                bindEvents();
+            } catch (err) {
+                console.error('Fetch error:', err);
+                errorEl.style.display = 'block';
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function bindEvents() {
+            stateSelect.addEventListener('change', onStateChange);
+            districtSelect.addEventListener('change', onDistrictChange);
+            applyBtn.addEventListener('click', applyFilters);
+            resetBtn.addEventListener('click', resetFilters);
+            searchBox.addEventListener('input', applyFilters);
+        }
+
+        function showLoading(flag) {
+            loadingEl.style.display = flag ? 'block' : 'none';
+        }
+
+        function populateStates() {
+            const states = unique(RAW_DATA.map(d => d.state));
+            fillSelect(stateSelect, states, 'All States');
+        }
+
+        function setDefaultFilters() {
+            // Set defaults
+            stateSelect.value = 'Uttar Pradesh';
+            onStateChange(); // Populate district
+            districtSelect.value = 'Gorakhpur';
+            onDistrictChange(); // Populate constituency
+            constituencySelect.value = 'Gorakhpur Urban';
+        }
+
+        function onStateChange() {
+            const state = stateSelect.value;
+            const districts = unique(
+                RAW_DATA.filter(d => !state || d.state === state).map(d => d.district)
+            );
+            fillSelect(districtSelect, districts, 'All Districts', !districts.length);
+            constituencySelect.innerHTML = '<option value="">All Constituencies</option>';
+            constituencySelect.disabled = true;
+        }
+
+        function onDistrictChange() {
+            const state = stateSelect.value;
+            const district = districtSelect.value;
+            const constituencies = unique(
+                RAW_DATA.filter(d => (!state || d.state === state) &&
+                    (!district || d.district === district))
+                .map(d => d.constituency)
+            );
+            fillSelect(constituencySelect, constituencies, 'All Constituencies', !constituencies.length);
+        }
+
+        function applyFilters() {
+            const state = stateSelect.value;
+            const district = districtSelect.value;
+            const constituency = constituencySelect.value;
+            const search = searchBox.value.trim().toLowerCase();
+
+            filteredData = RAW_DATA.filter(row => {
+                const stateOk = !state || row.state === state;
+                const districtOk = !district || row.district === district;
+                const constituencyOk = !constituency || row.constituency === constituency;
+                const searchOk = !search || [
+                    row.name, row.party, row.position,
+                    row.state, row.district, row.constituency
+                ].some(f => (f || '').toLowerCase().includes(search));
+
+                return stateOk && districtOk && constituencyOk && searchOk;
+            });
+
+            renderTable(filteredData);
+            updateSummary();
+        }
+
+        function resetFilters() {
+            stateSelect.value = '';
+            districtSelect.innerHTML = '<option value="">All Districts</option>';
+            districtSelect.disabled = true;
+            constituencySelect.innerHTML = '<option value="">All Constituencies</option>';
+            constituencySelect.disabled = true;
+            searchBox.value = '';
+
+            filteredData = [...RAW_DATA];
+            renderTable(filteredData);
+            updateSummary();
+        }
+
+        function renderTable(rows) {
+            tableBody.innerHTML = '';
+            noResults.style.display = rows.length ? 'none' : 'block';
+
+            const frag = document.createDocumentFragment();
+            rows.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+      <td>${safe(r.state)}</td>
+      <td>${safe(r.district)}</td>
+      <td>${safe(r.constituency)}</td>
+      <td>${safe(r.position)}</td>
+      <td>${safe(r.name)}</td>
+      <td>${safe(r.party)}</td>
+      <td>${safe(r.contact)}</td>
+      <td>${safe(r.termStart)}</td>
+    `;
+                frag.appendChild(tr);
+            });
+            tableBody.appendChild(frag);
+        }
+
+        function updateSummary() {
+            summaryEl.textContent = `${filteredData.length} record(s) shown`;
+        }
+
+        function fillSelect(selectEl, items, placeholder, disabled = false) {
+            const prev = selectEl.value;
+            selectEl.innerHTML = `<option value="">${placeholder}</option>`;
+            items.forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item;
+                opt.textContent = item;
+                selectEl.appendChild(opt);
+            });
+            if (items.includes(prev)) selectEl.value = prev;
+            selectEl.disabled = disabled;
+        }
+
+        function unique(arr) {
+            return Array.from(new Set(arr)).sort();
+        }
+
+        function safe(v) {
+            return v == null ? '' : String(v);
+        }
+    </script>
+    <script>
+        const buttons = document.querySelectorAll('.bx_head .follow_btn')
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent === 'Follow') {
+                    this.textContent = 'Following';
+                } else {
+                    this.textContent = 'Follow';
+                }
+            });
+        });
+    </script>
+    <script>
+        const overlay = document.getElementById('overlay');
+        const openBtn = document.getElementById('openOverlay');
+        const closeBtn = document.getElementById('closeOverlay');
+        const copyBtn = document.getElementById('copyLinkBtn');
+        const shareBtn = document.getElementById('shareLinkBtn');
+        const meetingLink = document.getElementById('meetingLink');
+        const meetingDescription = document.getElementById('meetingDescription');
+        const meetingDate = document.getElementById('meetingDate');
+        const meetingTime = document.getElementById('meetingTime');
+        const hostName = document.getElementById('hostName');
+        const userName = document.getElementById('userName');
+        const userEmail = document.getElementById('userEmail');
+        const userRole = document.getElementById('userRole');
+        const sendInviteBtn = document.getElementById('sendInviteBtn');
+        const toast = document.getElementById('toast');
+        const emailError = document.getElementById('emailError');
+
+        const followersModal = document.getElementById('followersModal');
+        const openFollowersBtn = document.getElementById('openFollowers');
+        const closeFollowersBtn = document.getElementById('closeFollowers');
+        const followersList = document.getElementById('followersList');
+
+        const EMAIL_REGEX = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+        // Sample followers data
+        const followers = [{
+                name: 'Ram',
+                email: 'ram@example.com'
+            },
+            {
+                name: 'Krishna',
+                email: 'krishna@example.com'
+            },
+            {
+                name: 'Shiva',
+                email: 'shiva@example.com'
+            },
+            {
+                name: 'Laxmi',
+                email: 'laxmi@example.com'
+            }
+        ];
+
+        openBtn.addEventListener('click', () => overlay.classList.add('active'));
+        closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+
+        openFollowersBtn.addEventListener('click', () => {
+            followersList.innerHTML = '';
+            followers.forEach(f => {
+                const div = document.createElement('div');
+                div.className = 'follower';
+                div.textContent = f.name + ' (' + f.email + ')';
+                div.addEventListener('click', () => addFollowerEmail(f.email));
+                followersList.appendChild(div);
+            });
+            followersModal.classList.add('active');
+        });
+
+        closeFollowersBtn.addEventListener('click', () => followersModal.classList.remove('active'));
+
+        function addFollowerEmail(email) {
+            let current = userEmail.value.trim();
+            if (current) {
+                current += ', ';
+            }
+            if (!current.includes(email)) {
+                userEmail.value = current + email;
+                showToast(email + ' added.');
+            }
+        }
+
+        // Copy meeting link
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(meetingLink.value);
+            } catch {
+                meetingLink.select();
+                document.execCommand('copy');
+            }
+            showToast('Meeting link copied!');
+        });
+
+        // Share meeting link
+        shareBtn.addEventListener('click', async () => {
+            const link = meetingLink.value;
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Meeting Link',
+                        url: link
+                    });
+                } catch {}
+            } else {
+                showToast('Share not supported. Copy link instead!');
+            }
+        });
+
+        // --- POPUP LOGIC ---
+        const postModal = $('#postModal');
+        $('#openPopup').addEventListener('click', () => postModal.classList.add('active'));
+        $('#closePopup').addEventListener('click', () => postModal.classList.remove('active'));
+        
+
+        // Send Invite
+        sendInviteBtn.addEventListener('click', () => {
+            const host = hostName.value.trim();
+            const name = userName.value.trim();
+            const emails = userEmail.value.split(',').map(e => e.trim()).filter(e => e);
+            const role = userRole.value.trim();
+            const link = meetingLink.value.trim();
+            const desc = meetingDescription.value.trim();
+            const date = meetingDate.value;
+            const time = meetingTime.value;
+
+            if (!validate(host, name, emails, date, time)) return;
+
+            const subject = `Meeting Invite from ${host || name || 'Organizer'}`;
+            const body = [
+                `Hello,`,
+                '',
+                `Host: ${host}`,
+                `Meeting Link: ${link}`,
+                `Date: ${date}`,
+                `Time: ${time}`,
+                desc ? `Description:\n${desc}\n` : '',
+                role ? `Role: ${role}` : '',
+                '',
+                'Thanks!'
+            ].join('\\n');
+
+            const mailto = `mailto:${encodeURIComponent(emails.join(','))}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailto;
+
+            showToast('Opening email client…');
+            overlay.classList.remove('active');
+        });
+
+        function validate(host, name, emails, date, time) {
+            if (!host) {
+                showToast('Please enter host name.');
+                return false;
+            }
+            if (!name) {
+                showToast('Please enter your name.');
+                return false;
+            }
+
+            const invalidEmails = emails.filter(e => !EMAIL_REGEX.test(e));
+            if (emails.length === 0 || invalidEmails.length > 0) {
+                emailError.style.display = 'block';
+                userEmail.classList.add('error');
+                showToast('Invalid email(s).');
+                return false;
+            }
+            emailError.style.display = 'none';
+            userEmail.classList.remove('error');
+
+            if (!date || !time) {
+                showToast('Please select date and time.');
+                return false;
+            }
+            const meetingDateTime = new Date(`${date}T${time}`);
+            if (meetingDateTime < new Date()) {
+                showToast('Meeting time cannot be in the past.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2200);
+        }
+    </script>
+    <script>
+        $('#openPopup').addEventListener('click', () => postModal.classList.add('active'));
+        $('#closePopup').addEventListener('click', () => postModal.classList.remove('active'));
+        $('.edit-btn').addEventListener('click', () => postModal.classList.add('active'));
+
+
+
+        // Close modal when clicking outside the form
+        postModal.addEventListener('click', (e) => {
+            if (e.target === postModal) postModal.classList.remove('active');
+        });
+    </script>
+
+<script>
+  const bell = document.getElementById('notificationBell');
+  const box = document.getElementById('notificationBox');
+
+  bell.addEventListener('click', (e) => {
+    e.stopPropagation();
+    box.classList.toggle('active');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!box.contains(e.target)) {
+      box.classList.remove('active');
+    }
+  });
+</script>
+
+<script>
+
+    const storyContainer = document.getElementById("storyContainer");
+    const addStoryModal = document.getElementById("addStoryModal");
+    const viewStoryModal = document.getElementById("viewStoryModal");
+    const viewImg = document.getElementById("viewImg");
+    const viewUsername = document.getElementById("viewUsername");
+    const viewText = document.getElementById("viewText");
+
+    function openAddModal() {
+      addStoryModal.style.display = "flex";
+    }
+    function closeAddModal() {
+      addStoryModal.style.display = "none";
+      document.getElementById("username").value = "";
+      document.getElementById("storyText").value = "";
+      document.getElementById("tag").value = "";
+      document.getElementById("storyImage").value = "";
+    }
+
+    function openViewModal(storyObj, storyDiv) {
+      viewImg.src = storyObj.img;
+      viewUsername.innerText = `${storyObj.username} ${storyObj.mood}`;
+      viewText.innerText = `${storyObj.storyText} ${storyObj.tag}`;
+      viewStoryModal.style.display = "flex";
+
+      // Mark story as seen
+      storyDiv.classList.add("seen"); // NEW
+      storyObj.seen = true; // NEW
+
+      // Save updated state
+      let stories = getStories();
+      stories = stories.map(s => 
+        (s.username === storyObj.username && s.storyText === storyObj.storyText) 
+        ? { ...s, seen: true } 
+        : s
+      );
+      saveStories(stories); // NEW
+    }
+    function closeViewModal() {
+      viewStoryModal.style.display = "none";
+    }
+
+    function saveStories(stories) {
+      localStorage.setItem("stories", JSON.stringify(stories));
+    }
+    function getStories() {
+      return JSON.parse(localStorage.getItem("stories")) || [];
+    }
+    function loadStories() {
+      const saved = getStories();
+      saved.forEach(s => renderStory(s, false));
+    }
+
+    function addStory() {
+      const username = document.getElementById("username").value.trim();
+      const storyText = document.getElementById("storyText").value.trim();
+      const mood = document.getElementById("mood").value;
+      const tag = document.getElementById("tag").value.trim();
+      const fileInput = document.getElementById("storyImage");
+      const file = fileInput.files[0];
+
+      if (!username || !storyText) {
+        alert("Please enter username and story text.");
+        return;
+      }
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const storyObj = { username, storyText, mood, tag, img: e.target.result, seen: false }; // NEW
+          const stories = getStories();
+          stories.push(storyObj);
+          saveStories(stories);
+          renderStory(storyObj);
+          closeAddModal();
+        };
+        reader.readAsDataURL(file);
+      } else {
+        const storyObj = { username, storyText, mood, tag, img: "https://via.placeholder.com/80", seen: false }; // NEW
+        const stories = getStories();
+        stories.push(storyObj);
+        saveStories(stories);
+        renderStory(storyObj);
+        closeAddModal();
+      }
+    }
+
+    function renderStory(storyObj) {
+      const storyDiv = document.createElement("div");
+      storyDiv.classList.add("story");
+      if (storyObj.seen) storyDiv.classList.add("seen"); // NEW
+
+      const img = document.createElement("img");
+      img.src = storyObj.img;
+      img.alt = "story";
+
+      const delBtn = document.createElement("button");
+      delBtn.classList.add("delete-btn");
+      delBtn.innerText = "x";
+      delBtn.onclick = (e) => {
+        e.stopPropagation();
+        storyDiv.remove();
+        const stories = getStories().filter(
+          s => !(s.username === storyObj.username && s.storyText === storyObj.storyText && s.tag === storyObj.tag)
+        );
+        saveStories(stories);
+      };
+
+      const p = document.createElement("p");
+      p.innerText = storyObj.username;
+
+      storyDiv.appendChild(img);
+      storyDiv.appendChild(delBtn);
+      storyDiv.appendChild(p);
+
+      storyDiv.onclick = () => openViewModal(storyObj, storyDiv);
+
+      storyContainer.appendChild(storyDiv);
+    }
+
+    
+
+    // displaypost 
+    const postForm = document.getElementById('postForm');
+    const postsContainer = document.getElementById('postsContainer');
+    const editIndexField = document.getElementById('editIndex');
+
+    // Load posts from localStorage
+    window.onload = function () {
+      // Load stories
+      const savedStories = getStories();
+      savedStories.forEach(s => renderStory(s, false));
+       let user = JSON.parse(localStorage.getItem("user"));
+    if(user){
+      document.getElementById("displayName").textContent = user.name;
+      document.getElementById("displayId").textContent = user.id; // ✅ show ID
+    } else {
+      window.location.href = "index.html";
+    }
+
+      // Load posts
+      const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+      savedPosts.forEach((post, index) => displayPost(post, index));
+    };
+
+    postForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const content = document.getElementById('content').value;
+      const category = document.getElementById('category').value;
+      const imageFile = document.getElementById('imageUpload').files[0];
+      const videoFile = document.getElementById('videoUpload').files[0];
+      const editIndex = editIndexField.value;
+
+      let newPost = { 
+        content, 
+        category, 
+        image: null, 
+        video: null, 
+        timestamp: new Date().toLocaleString() 
+      };
+
+      const readerPromises = [];
+
+      if (imageFile) {
+        readerPromises.push(new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            newPost.image = reader.result;
+            resolve();
+          };
+          reader.readAsDataURL(imageFile);
+        }));
+      }
+
+      if (videoFile) {
+        readerPromises.push(new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            newPost.video = reader.result;
+            resolve();
+          };
+          reader.readAsDataURL(videoFile);
+        }));
+      }
+
+      Promise.all(readerPromises).then(() => {
+        let savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+
+        if (editIndex) {
+          savedPosts[editIndex] = newPost;
+          localStorage.setItem('posts', JSON.stringify(savedPosts));
+          refreshPosts();
+          editIndexField.value = "";
+        } else {
+          savedPosts.unshift(newPost);
+          localStorage.setItem('posts', JSON.stringify(savedPosts));
+          displayPost(newPost, 0);
+        }
+
+        postForm.reset();
+      });
+    });
+
+    // === Reaction persistence helpers ===
+    const REACTION_STORE_KEY = 'postReactionsV1';
+    const DEFAULT_COUNTS = { happy: 0, sad: 0, unhappy: 0 };
+
+    const getReactionStore = () => JSON.parse(localStorage.getItem(REACTION_STORE_KEY) || '{}');
+    const setReactionStore = (obj) => localStorage.setItem(REACTION_STORE_KEY, JSON.stringify(obj));
+
+    function makeReactionKey(post) {
+      const c = (post.content || '').slice(0, 32);
+      return `${post.timestamp}||${post.category}||${c}||${post.image ? 1 : 0}${post.video ? 1 : 0}`;
+    }
+
+    function hydrateReactions(postEl, counts) {
+      postEl.querySelectorAll('.reaction-btn').forEach(btn => {
+        const type = btn.dataset.reaction;
+        const countEl = btn.querySelector('.count');
+        if (countEl) countEl.textContent = counts[type] ?? 0;
+      });
+    }
+
+    function attachReactionListeners(postEl, post, postKey) {
+      let store = getReactionStore();
+      let counts = { ...DEFAULT_COUNTS, ...(store[postKey] || {}) };
+
+      // hydrate from storage
+      hydrateReactions(postEl, counts);
+
+      // attach click events
+      postEl.querySelectorAll('.reaction-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.dataset.reaction;
+          const countEl = btn.querySelector('.count');
+          counts[type] = (counts[type] || 0) + 1;
+          if (countEl) countEl.textContent = counts[type];
+          store[postKey] = counts;
+          setReactionStore(store);
+        });
+      });
+    }
+    // === end reaction persistence ===
+
+    function displayPost(post, index) {
+      const div = document.createElement('div');
+      div.classList.add('post');
+      div.setAttribute('data-index', index);
+
+      const maxLength = 150;
+      const isTruncated = post.content.length > maxLength;
+      const shortText = isTruncated ? post.content.substring(0, maxLength) + "..." : post.content;
+      const fullText = post.content;
+
+      div.innerHTML = `
+      <div class="bx_head">
+          <div class="follow_btn">Follow</div>
+          <div class="bx_hd profile_avatar_post">
+              <img src="img/Mandipsingh.jpg" class="user-dp">
+          </div>
+          <div class="post_user_name">Mandip singh</div>
+          <div class="dropdown_ellipsis" id="dropdown_ellipsis">
+            <span class="ellipsis">⋮</span>
+            <div class="menu">
+              <button class="edit-btn" onclick="editPost(${index})">Edit</button>
+              <button class="delete-btn" onclick="deletePost(${index})">Delete</button>
+              <hr>
+              <button>Share</button>
+              <button>Report</button>
+              <button class="close-btn">Close ✖</button>
+            </div>
+          </div>
+      </div>
+      <p class="post-content">
+        <span class="category">${post.category}</span>
+        <span class="short-text">${shortText}</span>
+        <span class="full-text ${isTruncated ? 'hidden' : ''}">${fullText}</span>
+      </p>
+      ${isTruncated ? `<span class="read-more" onclick="toggleRead(this)">Read More</span>` : ''}
+      <span class="timestamp">📅 ${post.timestamp}</span>
+      ${post.image ? `<div class="media-box"><img src="${post.image}" alt="Uploaded Image"></div>` : ''}
+      ${post.video ? `<div class="media-box"><video controls src="${post.video}"></video></div>` : ''}
+      <div class="bx_footer">
+        <div class="comment_bx reaction-buttons">
+          <div onclick="commentOnPost(${index})">
+            <i class='fa fa-comment-o' title="comment"></i>
+          </div>
+          <i class="fa fa-retweet" title="repost"></i>
+          <button class="reaction-btn" data-reaction="happy" title="happy">😍
+            <span class="count">0</span>
+          </button>
+          <button class="reaction-btn" data-reaction="sad" title="sad">😔
+            <span class="count">0</span>
+          </button>
+          <button class="reaction-btn" data-reaction="unhappy" title="angry">😡
+            <span class="count">0</span>
+          </button>
+          <i class="fa fa-share-square-o" title="share"></i>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="edit-btn" onclick="editPost(${index})">Edit</button>
+        <button class="delete-btn" onclick="deletePost(${index})">Delete</button>
+      </div>
+      `;
+
+      postsContainer.prepend(div);
+
+      // attach reaction persistence
+      const key = makeReactionKey(post);
+      attachReactionListeners(div, post, key);
+    }
+
+    function refreshPosts() {
+      postsContainer.innerHTML = "";
+      const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+      savedPosts.forEach((post, index) => displayPost(post, index));
+    }
+
+    function deletePost(index) {
+      let savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+      const post = savedPosts[index];
+
+      // also remove reactions
+      if (post) {
+        const key = makeReactionKey(post);
+        let store = getReactionStore();
+        if (store[key]) {
+          delete store[key];
+          setReactionStore(store);
+        }
+      }
+
+      savedPosts.splice(index, 1);
+      localStorage.setItem('posts', JSON.stringify(savedPosts));
+      refreshPosts();
+    }
+
+    function editPost(index) {
+      let savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+      let post = savedPosts[index];
+      document.getElementById('content').value = post.content;
+      document.getElementById('category').value = post.category;
+      editIndexField.value = index;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      $('.edit-btn').addEventListener('click', () => postModal.classList.add('active'));
+    }
+
+    function toggleRead(el) {
+      const shortText = el.previousElementSibling.querySelector('.short-text');
+      const fullText = el.previousElementSibling.querySelector('.full-text');
+
+      if (fullText.classList.contains('hidden')) {
+        
+        fullText.classList.remove('hidden');
+        shortText.classList.add('hidden');
+        el.innerText = "Read Less";
+      } else {
+        fullText.classList.add('hidden');
+        shortText.classList.remove('hidden');
+        el.innerText = "Read More";
+      }
+    }
+    
+
+  </script>
+    <script>
+    const liveBtn = document.getElementById("liveBtn");
+    const livePanel = document.getElementById("livePanel");
+    const overlaylive = document.getElementById("overlaylive");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    // Open panel
+    liveBtn.addEventListener("click", () => {
+      livePanel.classList.add("active");
+      overlaylive.classList.add("active");
+    });
+
+    // Close on overlay click
+    overlaylive.addEventListener("click", closePanel);
+
+    // Close on cancel button
+    cancelBtn.addEventListener("click", closePanel);
+
+    function closePanel() {
+      livePanel.classList.remove("active");
+      overlaylive.classList.remove("active");
+    }
+
+
+   const dropdown_ellipsis = document.getElementById("dropdown_ellipsis");
+const toggleBtn_ellipse = dropdown_ellipsis.querySelector(".ellipsis");
+const closeBtn_ellipse = dropdown_ellipsis.querySelector(".close-btn");
+
+// Toggle on click ellipsis
+toggleBtn_ellipse.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent closing immediately
+  dropdown_ellipsis.classList.toggle("active");
+});
+
+// Close button
+closeBtn_ellipse.addEventListener("click", () => {
+  dropdown_ellipsis.classList.remove("active");
+});
+
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+  if (!dropdown_ellipsis.contains(e.target)) {
+    dropdown_ellipsis.classList.remove("active");
+  }
+});
+
+
+function logout(){
+      
+      window.location.href = "index.html";
+    }
+
+  </script>
+  
+<script>
+    // Modal open/close
+    const cabinetModal = document.getElementById('cabinetModal');
+    const openCabinetBtn = document.getElementById('openCabinetBtn');
+    const closeCabinetBtn = document.getElementById('closeCabinetBtn');
+
+    openCabinetBtn.addEventListener('click', () => {
+      cabinetModal.classList.add('active');
+    });
+
+    closeCabinetBtn.addEventListener('click', () => {
+      cabinetModal.classList.remove('active');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === cabinetModal) {
+        cabinetModal.classList.remove('active');
+      }
+    });
+
+    // Filter table
+    const filterInput = document.getElementById('filterInput');
+    filterInput.addEventListener('input', function() {
+      const filter = filterInput.value.toLowerCase();
+      const rows = document.querySelectorAll('#cabinetTable tbody tr');
+
+      rows.forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td'));
+        const match = cells.some(cell => cell.textContent.toLowerCase().includes(filter));
+        row.style.display = match ? '' : 'none';
+      });
+    });
+
+
+    const dpImg_dp = document.getElementById("profileDP");
+  const dpInput = document.getElementById("dpInput");
+  const allUserDPs = document.querySelectorAll(".user-dp");
+
+  // Load saved DP from localStorage
+  const savedDP_user = localStorage.getItem("userDP");
+  if (savedDP_user) {
+    dpImg_dp.src = savedDP_user;
+    updateAllDP(savedDP_user);
+  }
+
+  // Update DP when user selects image
+  dpInput.addEventListener("change", function() {
+    if (!this.files[0]) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const dataUrl = e.target.result;
+      localStorage.setItem("userDP", dataUrl); // Save in localStorage
+      dpImg_dp.src = dataUrl;
+      updateAllDP(dataUrl);
+    };
+    reader.readAsDataURL(this.files[0]);
+    this.value = ""; // Reset input
+  });
+
+  // Function to update all user DPs
+  function updateAllDP(imageSrc) {
+    allUserDPs.forEach(img => {
+      img.src = imageSrc;
+    });
+  }
+
+  // Remove DP
+  function removeDP() {
+    localStorage.removeItem("userDP");
+    const defaultDP = "img/default-dp.png";
+    dpImg_dp.src = defaultDP;
+    updateAllDP(defaultDP);
+  }
+  </script>
+  <script>
+  
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("profile_avatar");
+  const toggleBox = document.getElementById("dropdown");
+
+  // Toggle open/close on button click
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent triggering document click
+    toggleBox.classList.toggle("active");
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      toggleBox.classList.contains("active") &&
+      !toggleBox.contains(e.target) &&
+      !toggleBtn.contains(e.target)
+    ) {
+      toggleBox.classList.remove("active");
+    }
+  });
+});
+
+
+  </script>
+<script>
+const displayId = document.getElementById("displayId");
+    const copyMsg = document.getElementById("copyMsg");
+
+    displayId.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(displayId.textContent);
+        copyMsg.classList.add("show");
+        setTimeout(() => copyMsg.classList.remove("show"), 1500);
+      } catch (err) {
+        alert("Failed to copy: " + err);
+      }
+    });
+</script>
+
+<script src="js/menu.js"></script>
+</body>
+
+</html>
