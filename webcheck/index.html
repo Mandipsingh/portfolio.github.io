@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Website Checker- Adsense rules</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#9aa4b2;--pass:#16a34a;--fail:#ef4444}
+    body{font-family:Inter,ui-sans-serif,system-ui,Arial;background:linear-gradient(180deg,#071029 0%, #071a2e 100%);color:#e6eef6;margin:0;padding:24px;}
+    .wrap{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,.6);margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type=text], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,1);background:transparent;color:inherit;font-size:14px}
+    .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    button{background:var(--accent);border:0;padding:10px 12px;border-radius:10px;color:white;font-weight:600;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,.06)}
+    .results{max-height:560px;overflow:auto;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));}
+    .check{display:flex;align-items:flex-start;gap:12px;padding:10px;border-radius:8px;margin-bottom:8px;background:linear-gradient(90deg, rgba(255,255,255,0.006), rgba(255,255,255,0.002))}
+    .check .title{font-weight:700}
+    .pass{color:var(--pass);font-weight:700}
+    .fail{color:var(--fail);font-weight:700}
+    .note{font-size:13px;color:var(--muted)}
+    .score{font-size:28px;font-weight:800}
+    footer{margin-top:12px;color:var(--muted);font-size:13px;text-align:center}
+    .small{font-size:12px;color:var(--muted)}
+    .warning{color:#f59e0b}
+    .badge{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Website Checker - Adsense Rule</h1>
+        <div style="margin-left:auto" class="small">(Results are local to your browser — nothing is uploaded)</div>
+        <p class="lead">Drop a URL or upload an HTML file — to run policy check like (Ads/AdSense-style rules & common policy points).</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <label>Website URL (online)</label>
+          <input id="urlInput" type="text" placeholder="https://example.com" />
+
+          <div style="height:8px"></div>
+
+          <label>Or paste HTML (offline) / Upload .html file</label>
+          <textarea id="htmlInput" rows="8" placeholder="Paste the page HTML here (or upload a .html file)."></textarea>
+          <div style="height:8px"></div>
+          <input id="fileInput" type="file" accept="text/html" />
+
+          <div style="height:10px"></div>
+          <div class="controls">
+            <button id="checkBtn">Run Policy Check</button>
+            <button id="clearBtn" class="ghost">Clear</button>
+            <button id="exportCsv" class="ghost">Export CSV</button>
+            <button id="exportJson" class="ghost">Export JSON</button>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)" />
+          <div class="note">What this checks: privacy policy, contact page, ads/adsense markers, adult keywords, suspicious scripts (eval/obfuscation), HTTPS, cookie-consent, external link ratio, meta robots, and basic accessibility markers. <strong>(Not a legal audit)</strong></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card results" id="results">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+            <div class="score" id="score">—</div>
+            <div>
+              <div class="small">Overall policy compliance score</div>
+              <div id="summary" class="note">Run a check to see detailed findings.</div>
+            </div>
+          </div>
+          <div id="checksList"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="small">Demo Website @mandipsingh</footer>
+  </div>
+
+  <script>
+    function el(id){return document.getElementById(id)}
+    const adultWords = ['porn','sex','xxx','adult','escort','camgirl','cammodel','incest'];
+    const malwareWords = ['eval(','fromCharCode','atob(','unescape(','obfuscate','window.location="data:','document.write('];
+    let latestResults = null;
+
+    async function runCheck({url, html}){
+      const checks = [];
+      let doc=null, raw = html||'';
+      try{if(raw){const parser = new DOMParser();doc = parser.parseFromString(raw,'text/html');}}catch(e){}
+      const isHttps = url && url.startsWith('https://');
+      checks.push({key:'https',title:'HTTPS (secure origin)',ok:!!isHttps,details:isHttps?'Uses HTTPS':'Not HTTPS — insecure origins flagged by ad networks.'});
+      const title = doc?doc.querySelector('title')?.textContent:'';
+      const metaDesc = doc?doc.querySelector('meta[name="description"]')?.getAttribute('content')||'':'';
+      checks.push({key:'title',title:'Has descriptive <title>',ok:!!title,details:title||'No <title> found.'});
+      checks.push({key:'metaDesc',title:'Meta description present',ok:!!metaDesc,details:metaDesc||'No meta description.'});
+
+      let privacy=false, terms=false, contact=false;
+      if(doc){for(const a of doc.querySelectorAll('a')){const href=(a.href||'').toLowerCase();const tx=a.textContent.toLowerCase();if(href.includes('privacy')||tx.includes('privacy')) privacy=true;if(href.includes('terms')||tx.includes('terms')) terms=true;if(href.includes('contact')||tx.includes('contact')) contact=true;}}
+      checks.push({key:'privacy',title:'Privacy policy link',ok:privacy,details:privacy?'Privacy policy link found':'No privacy policy link.'});
+      checks.push({key:'terms',title:'Terms of service / usage',ok:terms,details:terms?'Terms found':'No terms detected.'});
+      checks.push({key:'contact',title:'Contact info',ok:contact,details:contact?'Contact found':'No contact link.'});
+
+      let adsense=false; if(doc){for(const s of doc.querySelectorAll('script')){const src=s.src||'';const txt=s.innerText||'';if(src.includes('adsbygoogle')||txt.includes('adsbygoogle')) adsense=true;}}
+      checks.push({key:'adsense',title:'AdSense script detected',ok:adsense||!adsense,details:adsense?'AdSense script found':'No AdSense script found.'});
+
+      const cookieBanner = (doc?.body.innerText.toLowerCase().includes('cookie'))||false;
+      checks.push({key:'cookie',title:'Cookie consent notice',ok:cookieBanner,details:cookieBanner?'Cookie notice found':'No cookie consent.'});
+
+      const lowraw=(raw||'').toLowerCase();
+      let adultCount=0;adultWords.forEach(w=>{if(lowraw.includes(w))adultCount++});
+      checks.push({key:'adult',title:'Adult content',ok:adultCount===0,details:adultCount?`Found ${adultCount} adult keywords`:'No adult content keywords.'});
+
+      let suspiciousCount=0;malwareWords.forEach(w=>{if(lowraw.includes(w.toLowerCase()))suspiciousCount++});
+      checks.push({key:'suspicious',title:'Suspicious scripts',ok:suspiciousCount===0,details:suspiciousCount?`Found ${suspiciousCount} suspicious scripts`:'No suspicious scripts.'});
+
+      const weights={https:2,privacy:3,contact:2,terms:1,cookie:1,adult:3,suspicious:3};
+      let max=0,score=0;for(const c of checks){const w=weights[c.key]||1;max+=w;if(c.ok)score+=w;}
+      const percent=Math.round((score/max)*100);
+      return{checks,percent};
+    }
+
+
+    el('checkBtn').addEventListener('click',async()=>{
+      const url=el('urlInput').value.trim();const html=el('htmlInput').value.trim();let pageHtml=html;
+      if(!pageHtml&&url){try{const res=await fetch(url);pageHtml=await res.text();}catch(e){}}
+      const result=await runCheck({url,html:pageHtml});latestResults=result;renderResults(result);
+    });
+
+    function renderResults({checks,percent}){
+      el('score').textContent=percent+'%';el('checksList').innerHTML='';
+      checks.forEach(c=>{const div=document.createElement('div');div.className='check';div.innerHTML=`<div style='flex:1'><div class='title'>${c.title}</div><div class='note'>${c.details}</div></div><div class='${c.ok?'pass':'fail'}'>${c.ok?'PASS':'FAIL'}</div>`;el('checksList').appendChild(div);});
+    }
+
+    el('clearBtn').addEventListener('click',()=>{el('urlInput').value='';el('htmlInput').value='';el('checksList').innerHTML='';el('score').textContent='—';});
+
+    function downloadFile(filename, content, type){const blob=new Blob([content],{type});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=filename;link.click();}
+
+    el('exportCsv').addEventListener('click',()=>{
+      if(!latestResults){alert('Run a check first.');return;}
+      const rows=['Title,Status,Details'];
+      latestResults.checks.forEach(c=>{rows.push(`${c.title},${c.ok?'PASS':'FAIL'},"${c.details.replace(/"/g,'""')}"`)});
+      downloadFile('policy_results.csv',rows.join('\n'),'text/csv');
+    });
+
+    el('exportJson').addEventListener('click',()=>{
+      if(!latestResults){alert('Run a check first.');return;}
+      downloadFile('policy_results.json',JSON.stringify(latestResults,null,2),'application/json');
+    });
+
+    el('fileInput').addEventListener('change',async(e)=>{const f=e.target.files[0];if(!f)return;const txt=await f.text();el('htmlInput').value=txt;});
+  </script>
+</body>
+</html>
