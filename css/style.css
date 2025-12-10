@@ -1625,8 +1625,24 @@ a#myBtn {
   z-index: 999;
   display: none;
 }
-
 /* line 141, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
+.slider_area .single_slider .slider_text h3 {
+overflow: hidden;
+    color: #FFF;
+    font-family: "Muli", sans-serif;
+    font-size: 58px;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: absolute;
+    line-height: 82px;
+    top: -45px;
+    margin-bottom: 9px;
+    transform: translate(0, -50%);
+    margin-left: 8%;
+    white-space: nowrap;
+}
+
+/* 
 .slider_area .single_slider .slider_text h3 {
   overflow: hidden;
     color: #FFF;
@@ -1644,7 +1660,7 @@ a#myBtn {
     white-space: nowrap;
     animation: typing 3s steps(40, end) 3s infinite, blink-caret .75s step-end infinite;
 
-}
+} */
 
 @media (max-width: 767px) {
   /* line 149, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
