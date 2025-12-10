@@ -1412,7 +1412,7 @@ a#myBtn {
   position: absolute;
   right: 100px;
   z-index: 999;
-  top: 45%;
+  top: 70%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
