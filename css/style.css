@@ -1747,12 +1747,12 @@ overflow: hidden;
 
 /* line 180, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text span {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   color: #FFFFFF;
   position: relative;
   z-index: 1;
-  margin-left: 25%;;
+  
 }
 
 
