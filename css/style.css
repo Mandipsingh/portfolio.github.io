@@ -1719,10 +1719,9 @@ overflow: hidden;
   .slider_area .single_slider .slider_text h3 {
     font-size: 30px;
     line-height: 35px;
-    margin-left: 42%;
+    
   }
   .slider_area .single_slider .slider_text span{
-    margin-left: 25%!important;
     font-size: 21px;
   }
   .boxed-btn3{
@@ -3210,9 +3209,9 @@ button#myBtn {
     padding: 100px 0 50px 0;
   }
 
-  .slider_text.text-center .download_cv{
+  /* .slider_text.text-center .download_cv{
     margin-left: 32%;
-  }
+  } */
 
 }
   
