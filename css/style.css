@@ -886,6 +886,7 @@ a#myBtn {
   top: 0;
   z-index: 99;
   position: absolute;
+   background-image: url(../img/banner/banner.png);
 }
 
 @media (max-width: 767px) {
