@@ -440,6 +440,9 @@ h3 {
   -o-transition: 0.5s;
   transition: 0.5s;
   cursor: pointer;
+  top: 8px;
+    left: 97px;
+    position: absolute;
 }
 
 /* line 47, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_btn.scss */
