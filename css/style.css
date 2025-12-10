@@ -1724,7 +1724,7 @@ overflow: hidden;
   }
   .slider_area .single_slider .slider_text span{
     margin-left: 25%!important;
-    font-size: 25px;
+    font-size: 21px;
   }
   .boxed-btn3{
     padding: 3% 10%;
@@ -1746,7 +1746,7 @@ overflow: hidden;
 
 /* line 180, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text span {
-  font-size: 25px;
+  font-size: 21px;
   font-weight: 400;
   color: #FFFFFF;
   position: relative;
