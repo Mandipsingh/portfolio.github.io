@@ -1522,7 +1522,7 @@ a#myBtn {
     width: 100%;
     left:0;
     content: '';
-    background-size: contain;
+    background-size: cover;
   }
 
   .slider_area .single_slider .social_links{
