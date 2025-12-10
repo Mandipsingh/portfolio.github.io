@@ -1411,6 +1411,7 @@ a#myBtn {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 767px) {
