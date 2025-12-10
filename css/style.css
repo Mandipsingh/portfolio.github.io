@@ -709,6 +709,12 @@ a#myBtn {
     font-size: 30px;
     line-height: 36px;
   }
+  .slider_area .single_slider::before {
+    content: '';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../img/mlogo.png);
+}
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
