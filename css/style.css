@@ -1377,9 +1377,6 @@ a#myBtn {
 }
 
 
-.slider_bg_1 {
-    background-image: url(../images/mandip_banner.png);
-}
 
 /* line 4, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
 .slider_bg_2 {
@@ -1500,6 +1497,7 @@ a#myBtn {
     content: '';
     background-repeat: no-repeat;
     background-size: cover;
+  background-image: url(../images/mandip_banner.png);
    
 }
 
