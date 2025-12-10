@@ -1493,16 +1493,15 @@ a#myBtn {
 
 /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
 .slider_area .single_slider::before {
-  position: absolute;
+ position: absolute;
     bottom: 0;
-    left: 5%;
-    background-image: url(../img/about/Mandip_profile_pic_nw.png);
-    width: 45%;
-    top: 25%;
+    width: 100%;
+    top: 0;
     content: '';
     opacity: 0.7;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url(../images/mandip7.png);
 }
 
 @media (max-width: 767px) {
