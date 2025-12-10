@@ -1375,9 +1375,13 @@ a#myBtn {
   }
 }
 
-/* line 1, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
+/* line 1, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss
 .slider_bg_1 {
   background-image: url(../img/banner/banner.png);
+} */
+
+.slider_bg_1 {
+    background-image: url(../images/mandip_banner.png);
 }
 
 /* line 4, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
