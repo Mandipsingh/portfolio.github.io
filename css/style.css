@@ -1719,6 +1719,7 @@ overflow: hidden;
   .slider_area .single_slider .slider_text h3 {
     font-size: 30px;
     line-height: 35px;
+    margin-left: 25%;
     
   }
   .slider_area .single_slider .slider_text span{
