@@ -614,7 +614,7 @@ pre code {
 
 @media (min-width:1200px) {
     .container {
-       position: absolute;
+       max-width: 1140px;
     }
 }
 
