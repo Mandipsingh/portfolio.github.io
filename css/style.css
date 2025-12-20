@@ -1517,6 +1517,7 @@ a#myBtn {
         content: '';
         background-size: cover;
         top: 14%;
+        height:100%;
         width: 100%;
         left: 0;
         background-position: center;
